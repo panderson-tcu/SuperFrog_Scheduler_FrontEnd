@@ -33,8 +33,6 @@
             </div>
         </div>
     </div>
-    
-    
 </template>
 
 <style>
@@ -48,6 +46,7 @@
     margin: 0;
     background-color: #4D1979;
     color: white;
+    padding: 0;
 }
 #header {
     display: flex;
@@ -88,4 +87,5 @@ img {
     height: 150px;
     object-fit: cover;
 }
+
 </style>
