@@ -36,17 +36,16 @@
 </template>
 
 <style>
-#app{
+/* #app{
   margin: 0;
   padding: 0;
-}
+} */
 #wrapper {
-    position: relative;
-    width: 100%;
-    margin: 0;
+    /* position: relative; */
+    justify-content: center;
+    align-items: center;
     background-color: #4D1979;
     color: white;
-    padding: 0;
 }
 #header {
     display: flex;
