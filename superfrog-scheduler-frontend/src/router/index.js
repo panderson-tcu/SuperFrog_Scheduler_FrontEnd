@@ -72,8 +72,23 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/ReceiptView.vue')
+    },
+    {
+      path: '/search-student',
+      name: 'search-student',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/SearchStudentView.vue')
+    },
+    {
+      path: '/sign-in',
+      name: 'sign-in',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/SignInView.vue')
     }
-
   ]
 })
 
