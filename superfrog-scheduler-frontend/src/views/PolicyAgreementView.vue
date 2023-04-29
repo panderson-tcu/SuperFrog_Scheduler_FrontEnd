@@ -14,7 +14,11 @@
                         <li>The SuperFrog suit is NOT rented out to the third party.</li>
                     </ul> <br>
                 </h3>
-                 <h3 id="check-box">I agree to the terms & conitions of a TCU Spirit appearances</h3>  
+                <div id="check-box-container">
+                    <input type="checkbox" id="check-box" v-model="isChecked">
+                    <label id="check-box">I agree to the terms & conitions of a TCU Spirit appearances</label>
+                </div>
+
             </div>
         </div>
 
@@ -37,6 +41,9 @@
 
 
 </template>
+<script>
+
+</script>
 
 <style>
 #app{
@@ -82,6 +89,7 @@ li{
 }
 #button-row > div {
     justify-content: center;
+    justify-items: center;
     align-items: center;
     display: block flex;
     background-color: white;
@@ -94,7 +102,7 @@ li{
     font-size: 20px;
 }
 #continue-button{
-    justify-content: right;
+    justify-content: center;
 }
 
 .icon {
@@ -116,6 +124,13 @@ li{
 .label {
     text-decoration: none !important;
     color: black;
+}
+#check-box-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    line-height: 30px;
 }
 
 </style>
