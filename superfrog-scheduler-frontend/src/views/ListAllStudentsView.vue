@@ -1,19 +1,26 @@
 <template>
   <div id="wrapper">
+    <!--Admin side bar-->
     <AdminSideBar />
-
-    <!--body-->
-    <div style="margin-right: 30px; margin-bottom: 10%">
-      <h1>View a Super Frog Student Account!</h1>
-
-      <form
-        @submit.prevent="searchStudents"
-        style="display: flex; margin-bottom: 20px"
+    <div id="main-col">
+      <AdminHeader />
+      <!--body-->
+      <div
+        style="
+          margin-right: 30px;
+          margin-bottom: 10%;
+          margin-top: 50px;
+          margin-left: 30px;
+        "
       >
-        <button type="submit">Load all students first!</button>
-      </form>
+        <h1>View a Super Frog Student Account!</h1>
 
-      <div class="list-container">
+        <form
+          @submit.prevent="searchStudents"
+          style="display: flex; margin-bottom: 20px"
+        >
+          <button type="submit">Load all students first!</button>
+        </form>
         <!--Sort by-->
         <div>
           <label for="sort-by">Sorted By: </label>
@@ -26,10 +33,10 @@
           <button @click="sortData">Sort</button>
         </div>
 
-        <!--Info Table-->
         <div>
           <h2>Click on each row to view individual students</h2>
           <table>
+            <!--table head-->
             <thead>
               <tr>
                 <th>ID</th>
@@ -40,9 +47,10 @@
                 <th>Address</th>
               </tr>
             </thead>
-            <tbody v-if="dataList">
+            <!--table body-->
+            <tbody v-if="displayedData">
               <tr
-                v-for="(item, index) in dataList"
+                v-for="(item, index) in displayedData"
                 :key="index"
                 @click="showPopup(item)"
               >
@@ -56,67 +64,135 @@
               </tr>
             </tbody>
           </table>
+          <div class="pagination">
+            <button :disabled="currentPage === 1" @click="prevPage">
+              Prev
+            </button>
+            <button :disabled="currentPage === totalPages" @click="nextPage">
+              Next
+            </button>
+          </div>
 
-          <!--Pop up when clicking each row-->
-          <div class="popup" v-if="popup">
-            <div class="popup-content">
-              <h3 style="margin-top:30px;">
-                Apperance requests completed by
-                {{ this.selectedData["firstName"] }}
-                {{ this.selectedData["lastName"] }}
-              </h3>
+          <div style="height: 100px"></div>
 
-              <!--table for completed appearances-->
-              <table v-if="completedAppearances">
+
+          <div class="popup" v-if="popup" style="">
+            <!--Student Account information-->
+            <h2 style="font-weight: bold; margin-left: 30px; margin-top: 30px;">I. Student Account Information</h2>
+            <table style="width: 80%; margin-left: 30px; margin-bottom: 30px; margin: 0 auto;">
+                <!--table head-->
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                  </tr>
+                </thead>
+                <!--table body-->
+                <tbody>
+                  <tr>
+                    <td>{{ selectedData.id }}</td>
+                    <td>{{ selectedData.firstName }}</td>
+                    <td>{{ selectedData.lastName }}</td>
+                    <td>{{ selectedData.email }}</td>
+                    <td>{{ selectedData.phoneNumber }}</td>
+                    <td>{{ selectedData.address }}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+             <!--Signed Up Appearances information-->
+            <h2 style="font-weight: bold; margin-left: 30px; margin-top: 30px;">II. Signed Up Appearances</h2>
+            <table style="width: 90%; margin-left: 30px; margin-bottom: 300px; margin: 0 auto;">
+                <!--table head-->
                 <thead>
                   <tr>
                     <th>Event ID</th>
                     <th>Customer First Name</th>
                     <th>Customer Last Name</th>
+                    <th>Phone</th>
+                    <th>Begin At</th>
+                    <th>End At</th>
                     <th>Event Title</th>
-                    <th>Beginning Time</th>
-                    <th>Ending Time</th>
                     <th>Event Address</th>
+                    <th>Event Type</th>
+                    <th>Organizer</th>
+                    <th>STATUS</th>
+
                   </tr>
                 </thead>
-                <tbody v-if="completedAppearances">
-                  <tr
-                    v-for="(item, index) in completedAppearances"
-                    :key="index"
-                  >
-                    <td>
-                      {{ JSON.stringify(item["E_id"]) }}
-                    </td>
-
-                    <td>
-                      {{ JSON.stringify(item["C_firstName"]) }}
-                    </td>
-                    <td>
-                      {{ JSON.stringify(item["C_lastName"]) }}
-                    </td>
-                    <td>
-                      {{ JSON.stringify(item["eventTitle"]) }}
-                    </td>
-                    <td>
-                      {{ JSON.stringify(item["beginning_time"]) }}
-                    </td>
-                    <td>
-                      {{ JSON.stringify(item["ending_time"]) }}
-                    </td>
-                    <td>
-                      {{ JSON.stringify(item["eventAddress"]) }}
-                    </td>
+                <!--table body-->
+                <tbody v-if="assignedAppearances">
+                  <tr v-for="(item, index) in assignedAppearances" :key="index">
+                    <td>{{ item.E_id}}</td>
+                    <td>{{ item.C_firstName }}</td>
+                    <td>{{ item.C_lastName }}</td>
+                    <td>{{ item.C_phone }}</td>
+                    <td>{{ item.beginning_time }}</td>
+                    <td>{{ item.ending_time }}</td>
+                    <td>{{ item.eventTitle }}</td>
+                    <td>{{ item.eventAddress }}</td>
+                    <td>{{ item.eventType }}</td>
+                    <td>{{ item.organizationName }}</td>
+                    <td>{{ item.status }}</td>
                   </tr>
                 </tbody>
               </table>
 
-              <button @click="hidePopup" style="margin-top: 100px;">Close</button>
-            </div>
+
+              <!--Signed Up Appearances information-->
+            <h2 style="font-weight: bold; margin-left: 30px; margin-top: 30px;">III. Completed Appearances</h2>
+            <table style="width: 90%; margin-left: 30px; margin-bottom: 300px; margin: 0 auto;">
+                <!--table head-->
+                <thead>
+                  <tr>
+                    <th>Event ID</th>
+                    <th>Customer First Name</th>
+                    <th>Customer Last Name</th>
+                    <th>Phone</th>
+                    <th>Begin At</th>
+                    <th>End At</th>
+                    <th>Event Title</th>
+                    <th>Event Address</th>
+                    <th>Event Type</th>
+                    <th>Organizer</th>
+                    <th>STATUS</th>
+
+                  </tr>
+                </thead>
+                <!--table body-->
+                <tbody v-if="completedAppearances">
+                  <tr v-for="(item, index) in completedAppearances" :key="index">
+                    <td>{{ item.E_id}}</td>
+                    <td>{{ item.C_firstName }}</td>
+                    <td>{{ item.C_lastName }}</td>
+                    <td>{{ item.C_phone }}</td>
+                    <td>{{ item.beginning_time }}</td>
+                    <td>{{ item.ending_time }}</td>
+                    <td>{{ item.eventTitle }}</td>
+                    <td>{{ item.eventAddress }}</td>
+                    <td>{{ item.eventType }}</td>
+                    <td>{{ item.organizationName }}</td>
+                    <td>{{ item.status }}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div style="height: 80px"></div>
+
+
+              <div style="position:fixed; top:0; right: 0; margin-right: 20px; margin-top: 10px;">
+                <button @click="hidePopup">X</button>
+              </div>
+            
           </div>
         </div>
       </div>
     </div>
-
     <!--footer-->
 
     <div id="footer">
@@ -126,6 +202,7 @@
 </template>
 
 <script>
+import AdminHeader from "../components/AdminHeader.vue";
 import AdminSideBar from "../components/AdminSideBar.vue";
 import axios from "axios";
 
@@ -139,13 +216,26 @@ export default {
       popup: false,
       responseAddress: "",
       completedAppearances: [],
+      assignedAppearances: [],
       selectedData: {},
 
       dataList: [],
+      currentPage: 1,
+      itemsPerPage: 4,
       university: "Texas Christian University",
       year: 2023,
       title: "SuperFrog Scheduler GOAT",
     };
+  },
+  computed: {
+    displayedData() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.dataList.slice(start, end);
+    },
+    totalPages() {
+      return Math.ceil(this.dataList.length / this.itemsPerPage);
+    },
   },
   methods: {
     searchStudents() {
@@ -174,34 +264,45 @@ export default {
       axios
         .get(`http://localhost:8080/api/v1/students/${student_id}`)
         .then((response) => {
-          this.completedAppearances = response.data.data["appearances"];
+          this.completedAppearances = response.data.data["completed_appearances"];
+          this.assignedAppearances = response.data.data["assigned_appearances"];
+          console.log(this.completedAppearances);
+          console.log(this.assignedAppearances);
+
         })
         .catch((error) => {
           console.log(error);
         });
     },
     hidePopup() {
+      console.log("hide pop-up clicked");
       this.popup = false;
+    },
+    prevPage() {
+      this.currentPage--;
+    },
+    nextPage() {
+      this.currentPage++;
     },
   },
 
-  components: { AdminSideBar },
+  components: { AdminSideBar, AdminHeader },
 };
 </script>
 
 <style>
 #wrapper {
-  background-color: #4d1979;
   color: white;
   width: auto;
+  flex-direction: row;
+  justify-content: flex-start;
 }
-#header {
-  display: flex;
-  text-align: center;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#main-col {
+  height: 100%;
+  width: 100%;
+  background-color: #4d1979;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 h1 {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -240,7 +341,7 @@ img {
   object-fit: cover;
 }
 .list-container {
-  height: 800px; /* Set a fixed height to make the list scrollable */
+  height: 400px; /* Set a fixed height to make the list scrollable */
   overflow-y: scroll; /* Make the container scrollable */
 }
 
@@ -249,10 +350,11 @@ th {
   padding: 10px;
   text-align: center;
   font-weight: bold;
-  border: 1px solid white;
+  border: 1px solid red;
 }
 table {
   width: 100%;
+  height: 20px;
   border-collapse: collapse;
   margin-top: 20px;
 }
@@ -273,5 +375,43 @@ tr:hover {
 
 tr:hover td {
   cursor: pointer;
+}
+.popup {
+  position: fixed;
+  color: #4d1979;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.95
+  ); /* 80% opacity white background */
+  width: 98%;
+  border-radius: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  height: 500px; 
+  overflow: auto;
+}
+.popup-content {
+  /* styles for the popup content */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-btn {
+  /* styles for the close button */
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
 }
 </style>

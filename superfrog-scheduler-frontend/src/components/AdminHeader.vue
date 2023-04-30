@@ -1,22 +1,38 @@
-
 <template>
-    <div id="header-wrapper">
-        <font-awesome-icon class="icon" icon ="bell"/>
-        <font-awesome-icon class="icon" icon ="user"/>
-        <span id="admin-name">Lindsey</span>
+    <div class="header" style="display: flex; justify-content: flex-end;">
+    <div class="user-profile">
+      <img src="../assets/img/SuperFrogLogo.png" alt="Profile Image" class="rounded"/>
+      <span class="user-name">Hiep Nguyen</span>
     </div>
+  </div>
+
+  
 </template>
 
 <style>
-#header-wrapper {
-    background-color: white;
-    color: black;
+.header {
+  background-color: #f5f5f5;
+  width: 100%;
+  padding: 0.5rem 1rem;
 }
 
-#admin-name {
-    font-size: 16px;
-    text-align: center;
-    text-justify: center;
+.user-profile {
+  display: flex;
+  align-items: center;
+  color: #000;
 }
+
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5rem;
+}
+
+.user-name {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #000;
+}
+
 
 </style>
