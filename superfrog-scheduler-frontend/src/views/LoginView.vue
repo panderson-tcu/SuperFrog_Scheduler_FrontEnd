@@ -1,7 +1,4 @@
 <script>
-// import BingInput from '../components/form/BingInput.vue';
-// import BingButton from '../components/form/BingButton.vue';
-// import BingLink from '../components/form/BingLink.vue';
 import utils from '@/utils';
 import {Form, Field, ErrorMessage} from 'vee-validate';
 import * as yup from 'yup';
@@ -10,7 +7,7 @@ export default {
   data() {
     return {
       validationSchema: yup.object({
-        account: yup.string().required().email().label('Account name'),
+        account: yup.string().required().label('Account name'),
         password: yup.string().required().min(3).label('Password'),
       }),
     };
@@ -22,6 +19,7 @@ export default {
   },
   methods: {
     login(values) {
+      console.log(values);
       utils.userLoginUtils.login(values);
     },
   },
@@ -30,13 +28,11 @@ export default {
 
 <template>
   <Form @submit="login" :validation-schema="validationSchema">
-    <div
-      class="w-[720px] translate-y-32 md:translate-y-0 bg-white md:grid grid-cols-2 rounded-md shadow-md overflow-hidden"
-    >
-      <div class="p-6 flex flex-col justify-between">
+    <div class="login-wrapper">
+      <div>
         <div>
-          <h2 class="text-center text-gray-700 text-lg" mt-3>User login</h2>
-          <div class="mt-8">
+          <h2 mt-3>User login</h2>
+          <div>
             <Field
                 name="account"
                 as="input"
@@ -44,13 +40,12 @@ export default {
                 class="input-account"
                 label="Account name"
                 placeholder="Input your account email"
-                v-model="loginInfo.account"
             />
             <ErrorMessage
                 name="account"
                 as="div"
-                class="bing-error"
             />
+            <br/>
             <Field
                 name="password"
                 as="input"
@@ -58,33 +53,24 @@ export default {
                 class="input-password"
                 label="Password"
                 placeholder="Input your password"
-                v-model="loginInfo.password"
             />
             <ErrorMessage
                 name="password"
                 as="div"
-                class="bing-error"
             />
           </div>
-          <BingButton class="mt-5">Login</BingButton>
-          <div class="flex justify-center mt-3">
-            <i class="fab fa-facebook rounded-full p-1 cursor-pointer"></i>
-            <i class="fab fa-google rounded-full p-1 cursor-pointer"></i>
+          <button>Login</button>
+          <div>
+            <i></i>
+            <i></i>
           </div>
         </div>
-        <div class="flex gap-2 justify-center mt-5">
-          <BingLink>Home</BingLink>
+        <div>
+          <!-- <BingLink>Home</BingLink>
           <BingLink>Registration</BingLink>
           <BingLink>Forget password</BingLink>
-          <BingLink>Service</BingLink>
+          <BingLink>Service</BingLink> -->
         </div>
-      </div>
-      <div class="hidden md:block relative">
-        <img
-            src="/images/login.jpg"
-            alt=""
-            class="absolute h-full w-full object-cover"
-        />
       </div>
     </div>
   </form>
@@ -93,5 +79,27 @@ export default {
 <style scoped lang="scss">
 form {
   @apply bg-slate-300 h-screen flex justify-center items-start md:items-center p-5 md:p-0;
+}
+
+.login-wrapper {
+  background-color: #4D1979;
+  color: white;
+  height: 100vh;
+  margin: auto;
+}
+
+h2 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 40px;
+}
+button {
+  background-color: rgb(179, 179, 179);
+}
+.input-account {
+  width: 200px;
+}
+
+.input-password {
+  width: 200px;
 }
 </style>
