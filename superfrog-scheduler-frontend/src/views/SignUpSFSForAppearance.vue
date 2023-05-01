@@ -1,5 +1,9 @@
+<script setup>
+    import AdminHeader from '../components/AdminHeader.vue';
+</script>
 <template>
-    <!-- <admin-header /> -->
+  <div id="wrapper">
+    <AdminHeader></AdminHeader>
     <div class="container">
       <h1>Sign-Up For Appearances</h1>
       <ul>
@@ -29,10 +33,10 @@
         </li>
       </ul>
     </div>
+  </div>
   </template>
   
   <script>
-    import AdminHeader from '../components/AdminSideBar.vue';
   export default {
     data() {
       return {
@@ -91,6 +95,15 @@
 
   
   <style>
+  #wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    background-color: #4D1979;
+    color: white;
+  }
+  
   .container {
     max-width: 800px;
     margin: 0 auto;
