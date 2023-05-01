@@ -1,23 +1,29 @@
+<script setup>
+  import AdminHeader from '../components/AdminHeader.vue';
+</script>
 <template>
-  <div class="form-container">
-    <h1>Approved Appearances</h1>
-    <ul>
-      <li v-for="(appearance, index) in appearances" :key="index">
-        <h2>
-          {{ appearance.eventTitle }}
-          <span v-if="appearance.status === 'complete'" class="checkmark">&#10004;</span>
-        </h2>
-        <p>{{ appearance.C_firstName }}</p>
-        <p>{{ appearance.C_lastName }}</p>
-        <p>{{ appearance.LocalDateTime }}</p>
-        <p>{{ appearance.eventAddress }}</p>
-        <div class="button-group">
-          <button @click="cancelAppearance(index)">Cancel</button>
-          <button @click="markComplete(index)">Mark as Complete</button>
-        </div>
-      </li>
-    </ul>
-  </div>
+  <AdminHeader></AdminHeader>
+  <div id="wrapper">
+    <div class="form-container">
+      <h1>Approved Appearances</h1>
+      <ul>
+        <li v-for="(appearance, index) in appearances" :key="index">
+          <h2>
+            {{ appearance.eventTitle }}
+            <span v-if="appearance.status === 'complete'" class="checkmark">&#10004;</span>
+          </h2>
+          <p>{{ appearance.C_firstName }}</p>
+          <p>{{ appearance.C_lastName }}</p>
+          <p>{{ appearance.LocalDateTime }}</p>
+          <p>{{ appearance.eventAddress }}</p>
+          <div class="button-group">
+            <button @click="cancelAppearance(index)">Cancel</button>
+            <button @click="markComplete(index)">Mark as Complete</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+</div>
 </template>
 
 <script>
