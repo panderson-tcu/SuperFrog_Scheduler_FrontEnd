@@ -72,6 +72,26 @@
     </div>
   </template>
   
+  <script>
+  export default {
+    data() {
+      return {
+        date: '',
+        startTime: '',
+        endTime: '',
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        title: '',
+        orgName: '',
+        address: ''
+      }
+    }
+  }
+  </script>
+  
+  
   <style>
 
   .form-container {
