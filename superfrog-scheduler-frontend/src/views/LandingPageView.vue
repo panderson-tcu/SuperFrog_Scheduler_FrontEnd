@@ -30,8 +30,10 @@
                 <div class="label">Range</div>
             </div>
             <div id="request-button">
-                <font-awesome-icon class="icon" icon="calendar-days" />
-                <div class="label">Request</div>
+                    <router-link to="/select-date-time">
+                    <font-awesome-icon class="icon" icon="calendar-days" />
+                    <div class="label">Request</div>
+                </router-link>
             </div>
             <div id="modify-request-button">
                 <font-awesome-icon class="icon" icon="pencil" />

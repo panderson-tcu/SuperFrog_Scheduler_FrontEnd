@@ -1,8 +1,11 @@
 <template>
     <div id="header-wrapper">
         <font-awesome-icon class="header-icon" icon ="bell"/>
-        <font-awesome-icon class="header-icon" icon ="user"/>
-        <span id="admin-name">Lindsey</span>
+        <RouterLink to="/view-profile">
+            <font-awesome-icon class="header-icon" icon ="user"/>
+        </RouterLink>
+
+        <span id="admin-name">Ryan</span>
     </div>
 </template>
 

@@ -17,7 +17,7 @@
             </div>
         </div>
         <div id="button-row">
-            <RouterLink to="/" >
+            <RouterLink to="/landing-page" >
                 <div id="home-button" class="change-page">
                     <font-awesome-icon class="icon" icon="house" />
                     <div class="label">Home</div>
@@ -81,6 +81,7 @@ h3 {
 #continue-button{
     justify-content: right;
 }
+
 
 .icon {
     font-size: 40px;
