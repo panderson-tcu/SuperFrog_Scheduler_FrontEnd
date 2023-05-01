@@ -91,6 +91,38 @@ let routes = [
                     requiresAuth: false,
                 },
                 component: () => import('../views/LoginView.vue')
+            },
+            {
+                path: '/edit-student-profile',
+                name: 'edit-student-profile',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/EditsStudentProfile.vue')
+            },
+            {
+                path: '/sign-up',
+                name: 'sign-up',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/SignUpSFSForAppearance.vue')
+            },
+            {
+                path: '/list-all-appearances',
+                name: 'list-all-appearances',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/ListAllAppearances.vue')
+            },
+            {
+                path: '/view-profile',
+                name: 'view-profile',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/ViewProfileInfo.vue')
             }
         ]
     },
