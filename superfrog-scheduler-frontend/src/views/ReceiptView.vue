@@ -1,5 +1,9 @@
+<script>
+      import AdminHeader from '../components/AdminHeader.vue';
+</script>
 <template>
     <div id="wrapper">
+        <AdminHeader></AdminHeader>
         <div id="header">
             <div id="text">
                 <h1>SuperFrog Scheduler</h1>

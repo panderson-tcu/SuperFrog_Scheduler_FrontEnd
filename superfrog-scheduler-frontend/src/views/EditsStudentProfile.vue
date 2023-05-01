@@ -1,54 +1,58 @@
-<template>
-  <!-- <admin-header /> -->
-    <div class="container">
-      <h1>Edit Profile Information</h1>
-      <form>
-        <div class="form-group">
-          <label for="first-name">First Name:</label>
-          <input type="text" id="first-name" v-model="firstName">
-        </div>
-        <div class="form-group">
-          <label for="last-name">Last Name:</label>
-          <input type="text" id="last-name" v-model="lastName">
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone:</label>
-          <input type="text" id="phone" v-model="phone">
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" v-model="email">
-        </div>
-        <div class="form-group">
-          <label for="address">Address:</label>
-          <textarea id="address" v-model="address"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="international">International:</label>
-          <select id="international" v-model="isInternational">
-            <option value="false">Not International</option>
-            <option value="true">International</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="payment-preference">Payment Preference:</label>
-          <select id="payment-preference" v-model="paymentPreference">
-            <option value="Mail Check">Mail Check</option>
-            <option value="Pick up check">Pick up check</option>
-          </select>
-        </div>
+<script setup>
+    import AdminHeader from '../components/AdminHeader.vue';
+</script>
 
-        <RouterLink to="/view-profile"> <!-- Should maybe be clickabke to a view profile page -->
-            <button type="submit" class="btn">Save Changes</button>
-        </RouterLink>
-      </form>
-    </div>
+<template>
+  <div id="wrapper">
+    <admin-header />
+      <div class="container">
+        <h1>Edit Profile Information</h1>
+        <form>
+          <div class="form-group">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" v-model="firstName">
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" v-model="lastName">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" v-model="phone">
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" v-model="email">
+          </div>
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" v-model="address"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="international">International:</label>
+            <select id="international" v-model="isInternational">
+              <option value="false">Not International</option>
+              <option value="true">International</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="payment-preference">Payment Preference:</label>
+            <select id="payment-preference" v-model="paymentPreference">
+              <option value="Mail Check">Mail Check</option>
+              <option value="Pick up check">Pick up check</option>
+            </select>
+          </div>
+
+          <RouterLink to="/view-profile"> <!-- Should maybe be clickabke to a view profile page -->
+              <button type="submit" class="btn">Save Changes</button>
+          </RouterLink>
+        </form>
+      </div>
+  </div>
   </template>
   
   <script>
-    import AdminHeader from '../components/AdminSideBar.vue';
-
-  export default {
+    export default {
     data() {
       return {
         firstName: '',
@@ -64,6 +68,13 @@
   </script>
   
   <style>
+  #wrapper {
+    /* position: relative; */
+    justify-content: center;
+    align-items: center;
+    background-color: #4D1979;
+    color: white;
+}
   .container {
     max-width: 800px;
     margin: 0 auto;
