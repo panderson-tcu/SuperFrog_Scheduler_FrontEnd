@@ -1,8 +1,14 @@
 <!-- <script src="https://kit.fontawesome.com/03551b431b.js" crossorigin="anonymous"></script> -->
+<script setup>
+    import AdminHeader from '../components/AdminHeader.vue';
+</script>
 
 <template>
     <div id="wrapper">
+        <AdminHeader />
+
         <div id="header">
+
             <div id="text">
                 <h1>SuperFrog Scheduler</h1>
                 <h3>Add TCU Spirit to your Event! <br>
