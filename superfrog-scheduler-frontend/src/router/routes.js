@@ -123,6 +123,14 @@ let routes = [
                     requiresAuth: false,
                 },
                 component: () => import('../views/ViewProfileInfo.vue')
+            },
+            {
+                path: '/deactivate',
+                name: 'deactivate',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/DeactivateStudentView.vue')
             }
         ]
     },
