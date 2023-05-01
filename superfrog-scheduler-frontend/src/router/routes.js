@@ -131,7 +131,15 @@ let routes = [
                     requiresAuth: false,
                 },
                 component: () => import('../views/DeactivateStudentView.vue')
-            }
+            },
+            {
+                path: '/edit-request-details',
+                name: 'edit-request-details',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/EditRequestDetails.vue')
+            },
         ]
     },
 ];
