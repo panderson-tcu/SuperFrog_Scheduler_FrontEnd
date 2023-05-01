@@ -1,6 +1,6 @@
 <template>
     <div id="sidebar-wrapper">
-        <img src="./img/SuperFrogLogo" alt="">
+        <img src="src/img/SuperFrog-TCU.png" alt="">
         <div id="sf-student-menu">
             <font-awesome-icon class="icon" icon ="address-book"/>
             <span class="menu-label">SuperFrog Students</span>
