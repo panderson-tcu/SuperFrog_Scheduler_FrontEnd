@@ -31,6 +31,14 @@ const router = createRouter({
       name: 'honorarium',
       component: () => import('../views/PaymentForServices.vue')
     },
+
+    {
+      path: '/performance-reports',
+      name: 'performance-reports',
+      component: () => import('../views/PerformanceReportView.vue')
+
+    },
+    
     {
       path: '/list-requests',
       name: 'list-requests',
