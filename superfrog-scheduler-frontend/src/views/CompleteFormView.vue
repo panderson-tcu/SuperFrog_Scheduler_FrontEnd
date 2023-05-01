@@ -62,13 +62,13 @@ import AdminHeader from '../components/AdminHeader.vue';
           </div>
     
           <div class="button-group">
-            <router-link to="/complete-form">
+            <router-link to="/policy-agreement">
               <button type="submit" class="btn">Continue</button>
             </router-link>
           </div>
     
           <div class="form-group">
-            <router-link to="/">
+            <router-link to="/select-date-time">
               <button type="button" class="btn">Back</button>
             </router-link>
           </div> 
@@ -173,7 +173,7 @@ import AdminHeader from '../components/AdminHeader.vue';
   }
   
   .btn:hover {
-    background-color: #4D1979;
+    background-color: #ccc;
     color: #fff;
   }
 </style>

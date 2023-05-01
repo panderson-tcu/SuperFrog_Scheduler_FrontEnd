@@ -14,6 +14,17 @@ import AdminHeader from '../components/AdminHeader.vue';
       <p>isInternational: {{ user.international }}</p>
       <p>Payment Type: {{ user.payment }}</p>
     </div>
+    <div class="button-group">
+            <router-link to="/landing-page">
+              <button type="button" class="btn">Home</button>
+            </router-link>
+          </div>
+    
+          <div class="form-group">
+            <router-link to="/edit-student-profile">
+              <button type="button" class="btn">Edit Profile</button>
+            </router-link>
+          </div>
   </div>
 </template>
 
@@ -45,4 +56,26 @@ export default {
   max-height: 100%;
   margin: 0 auto;
 }
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #4D1979;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #ccc;
+    color: #fff;
+  }
 </style>

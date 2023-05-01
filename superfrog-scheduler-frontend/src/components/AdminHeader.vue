@@ -1,7 +1,10 @@
 <template>
     <div id="header-wrapper">
         <font-awesome-icon class="header-icon" icon ="bell"/>
-        <font-awesome-icon class="header-icon" icon ="user"/>
+        <RouterLink to="/view-profile">
+            <font-awesome-icon class="header-icon" icon ="user"/>
+        </RouterLink>
+
         <span id="admin-name">Lindsey</span>
     </div>
 </template>
