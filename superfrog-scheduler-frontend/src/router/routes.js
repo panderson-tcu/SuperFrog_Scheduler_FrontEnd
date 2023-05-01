@@ -114,11 +114,11 @@ let routes = [
                 meta: {
                     requiresAuth: false,
                 },
-                component: () => import('../views/ListAllAppearances.vue')
+                component: () => import('../views/ListApproved.vue')
             },
             {
-                path: '/view-profile',
-                name: 'view-profile',
+                path: '/student-profile',
+                name: 'student-profile',
                 meta: {
                     requiresAuth: false,
                 },

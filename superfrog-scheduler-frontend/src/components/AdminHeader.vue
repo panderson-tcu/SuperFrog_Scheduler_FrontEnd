@@ -33,6 +33,10 @@
   font-weight: 500;
   color: #000;
 }
+img {
+  display: block;
+  margin: 20px auto;
+}
 
 
 </style>
