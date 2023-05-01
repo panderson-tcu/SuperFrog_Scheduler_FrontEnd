@@ -6,26 +6,45 @@ import AdminHeader from '../components/AdminHeader.vue';
     <AdminHeader></AdminHeader>
     <div class="profile-container">
       <!-- <h1>{{ user.name }}'s Profile</h1> -->
-      <h1>Lindsey's Profile</h1>
+      <h1>Ryan's Profile</h1>
       <p>First Name: {{ user.firstName }}</p>
-      <p>Last Name: {{ user.lasttName }}</p>
+      <p>Last Name: {{ user.lastName }}</p>
       <p>Email: {{ user.email }}</p>
       <p>Address: {{ user.address }}</p>
       <p>isInternational: {{ user.international }}</p>
       <p>Payment Type: {{ user.payment }}</p>
     </div>
+    <div class="button-group">
+            <router-link to="/landing-page">
+              <button type="button" class="btn">Home</button>
+            </router-link>
+          </div>
+    
+          <div class="form-group">
+            <router-link to="/edit-student-profile">
+              <button type="button" class="btn">Edit Profile</button>
+            </router-link>
+          </div>
   </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            user: {}
-        };
-    },
-    components: { AdminHeader }
+  data() {
+    return {
+      user: {
+        firstName: 'Ryan',
+        lastName: 'Gosling',
+        email: 'ryangosling@gmail.com',
+        address: '123 Berry St.',
+        international: 'No',
+        payment: 'Mail Check'
+      }
+    };
+  },
+  components: { AdminHeader }
 }
+
 </script>
 
 <style>
@@ -45,4 +64,26 @@ export default {
   max-height: 100%;
   margin: 0 auto;
 }
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #4D1979;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #ccc;
+    color: #fff;
+  }
 </style>
