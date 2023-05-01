@@ -88,6 +88,22 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/SignUpSFSForAppearance.vue')
+    },
+    {
+      path: '/list-all-appearances',
+      name: 'list-all-appearances',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/ListAllAppearances.vue')
+    },
+    {
+      path: '/view-profile',
+      name: 'view-profile',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/ViewProfileInfo.vue')
     }
 
   ]

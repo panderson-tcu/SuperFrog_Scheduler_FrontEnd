@@ -38,7 +38,7 @@
           </select>
         </div>
 
-        <RouterLink to="/view-student-profile"> <!-- Should maybe be clickabke to a view profile page -->
+        <RouterLink to="/view-profile"> <!-- Should maybe be clickabke to a view profile page -->
             <button type="submit" class="btn">Save Changes</button>
         </RouterLink>
       </form>

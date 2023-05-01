@@ -39,7 +39,7 @@
         events: [
           {
             eventName: 'Wedding',
-            date: 'May 5, 2023',
+            date: '2023-05-05',
             location: '123 Main Street',
             isSignedUp: false,
             superFrogFirstName: '',
@@ -50,7 +50,7 @@
           },
           {
             eventName: 'Public Event',
-            date: 'June 10, 2023',
+            date: '2023-07-19',
             location: '12 Convention Center Drive',
             isSignedUp: true,
             superFrogFirstName: 'Annalise',
@@ -61,7 +61,7 @@
           },
           {
             eventName: 'Graduation Party',
-            date: 'May 15, 2023',
+            date: '2023-05-15',
             location: '567 Berry Street',
             isSignedUp: false,
             superFrogFirstName: '',
