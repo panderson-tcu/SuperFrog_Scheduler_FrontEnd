@@ -14,7 +14,7 @@
                 <input type="text" id="first-name" v-model="firstName">
             </div>
     
-            <RouterLink to="/view-profile"> <!-- Should maybe be clickabke to a view profile page -->
+            <RouterLink to="/landing-page"> <!-- Should maybe be clickabke to a view profile page -->
                 <button type="submit" class="btn">Deactivate Student</button>
             </RouterLink>
             </form>
