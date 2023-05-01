@@ -140,6 +140,14 @@ let routes = [
                 },
                 component: () => import('../views/EditRequestDetails.vue')
             },
+            {
+                path: '/price-table',
+                name: 'price-table',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/PriceTableView.vue')
+            },
         ]
     },
 ];
