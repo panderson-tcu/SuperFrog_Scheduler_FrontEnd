@@ -3,7 +3,7 @@ const info = async () => {
 };
 
 const login = async (loginInfo) => {
-  return await fetch('/api/auth/login', {
+  return await fetch('http://localhost:8080/api/v1/users/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -11,5 +11,15 @@ const login = async (loginInfo) => {
     body: JSON.stringify(loginInfo),
   }).then((r) => r.json());
 };
+
+// const login = async (loginInfo) => {
+//   return await fetch('/api/auth/login', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(loginInfo),
+//   }).then((r) => r.json());
+// };
 
 export default { info, login };

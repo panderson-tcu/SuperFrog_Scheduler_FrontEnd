@@ -77,9 +77,9 @@ export default {
 </template>
 
 <style scoped lang="scss">
-form {
-  @apply bg-slate-300 h-screen flex justify-center items-start md:items-center p-5 md:p-0;
-}
+// form {
+//   @apply bg-slate-300 h-screen flex justify-center items-start md:items-center p-5 md:p-0;
+// }
 
 .login-wrapper {
   background-color: #4D1979;

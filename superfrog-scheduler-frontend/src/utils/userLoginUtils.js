@@ -28,9 +28,9 @@ export async function login(loginInfo) {
 export function logout() {
     cache.remove('login_token');
 
-// remove user info from Pinia store
-const userStore = useUserStore();
-userStore.userInfo = null;
+    // remove user info from Pinia store
+    const userStore = useUserStore();
+    userStore.userInfo = null;
 
     // redirect to root page
     router.push('/home');
