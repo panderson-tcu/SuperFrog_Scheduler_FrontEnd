@@ -5,78 +5,54 @@ import AdminHeader from '../components/AdminHeader.vue';
   <div id="wrapper">
     <AdminHeader></AdminHeader>
       <div class="form-container">
-        <h1 class="form-header">Select Date Time</h1>
+        <h1 class="form-header">Edit Request Details</h1>
         <form>
           <div class="form-group">
             <label for="date">Date:</label>
             <input type="date" id="date" v-model="date">
           </div>
-
-          <table class="table-wrapper">
-            <tr>
-                <th>Time</th>
-                <th>Unavlaible times</th>
-            </tr>
-            <tr>
-                <td>10am</td>
-                <td>10am</td> 
-            </tr>
-            <tr>
-                <td>11am</td>
-                <td>11am</td> 
-            </tr>
-            <tr>
-                <td>12pm</td>
-                <td>12pm</td> 
-            </tr>
-            <tr>
-                <td>1pm</td>
-                <td>1pm</td> 
-            </tr>
-            <tr>
-                <td>2pm</td>
-                <td></td> 
-            </tr>
-            <tr>
-                <td>3pm</td>
-                <td></td> 
-            </tr>
-            <tr>
-                <td>4pm</td>
-                <td></td> 
-            </tr>
-            <tr>
-                <td>5pm</td>
-                <td></td> 
-            </tr>
-            <tr>
-                <td>6pm</td>
-                <td></td> 
-            </tr>
-            <tr>
-                <td>7pm</td>
-                <td></td> 
-            </tr>
-            <tr>
-                <td>8pm</td>
-                <td></td> 
-            </tr>
-          </table>
-
+    
+          <div class="form-group">
+            <label for="start-time">Start Time:</label>
+            <input type="time" id="start-time" v-model="startTime">
+          </div>
+    
+          <div class="form-group">
+            <label for="end-time">End Time:</label>
+            <input type="time" id="end-time" v-model="endTime">
+          </div>
+    
+          <h2>Event Information</h2>
+    
+          <div class="form-group">
+            <label for="title">Event Title:</label>
+            <textarea id="event-title" v-model="title"></textarea>
+          </div>
+    
+          <div class="form-group">
+            <label for="org-name">Name of Organization:</label>
+            <textarea id="org-name" v-model="orgName"></textarea>
+          </div>
+    
+          <div class="form-group">
+            <label for="address">Address of Appearance:</label>
+            <textarea id="address" v-model="address"></textarea>
+          </div>
+    
           <div class="button-group">
-            <router-link to="/complete-form">
+            <router-link to="/policy-agreement">
               <button type="submit" class="btn">Continue</button>
             </router-link>
           </div>
     
           <div class="form-group">
-            <router-link to="/landing-page">
+            <router-link to="/select-date-time">
               <button type="button" class="btn">Back</button>
             </router-link>
           </div> 
-        </form>
+          </form> 
+      </div>   
      </div>
-    </div>
   </template>
   
   <script>
@@ -84,6 +60,15 @@ import AdminHeader from '../components/AdminHeader.vue';
     data() {
         return {
             date: "",
+            startTime: "",
+            endTime: "",
+            firstName: "",
+            lastName: "",
+            phone: "",
+            email: "",
+            title: "",
+            orgName: "",
+            address: ""
         };
     },
     components: { AdminHeader }
@@ -116,22 +101,6 @@ import AdminHeader from '../components/AdminHeader.vue';
   
   .form-group {
     margin-bottom: 20px;
-  }
-
-  .table-wrapper{
-    background-color: white;
-    color: black;
-  }
-
-  td, th {
-    border: 1px solid black;
-    text-align: left;
-    padding: 8px;
-  }
-
-  td {
-    padding: 10px;
-    margin: auto;
   }
 
   .button-group {
