@@ -6,9 +6,9 @@ import AdminHeader from '../components/AdminHeader.vue';
     <AdminHeader></AdminHeader>
     <div class="profile-container">
       <!-- <h1>{{ user.name }}'s Profile</h1> -->
-      <h1>Lindsey's Profile</h1>
+      <h1>Ryan's Profile</h1>
       <p>First Name: {{ user.firstName }}</p>
-      <p>Last Name: {{ user.lasttName }}</p>
+      <p>Last Name: {{ user.lastName }}</p>
       <p>Email: {{ user.email }}</p>
       <p>Address: {{ user.address }}</p>
       <p>isInternational: {{ user.international }}</p>
@@ -30,13 +30,21 @@ import AdminHeader from '../components/AdminHeader.vue';
 
 <script>
 export default {
-    data() {
-        return {
-            user: {}
-        };
-    },
-    components: { AdminHeader }
+  data() {
+    return {
+      user: {
+        firstName: 'Ryan',
+        lastName: 'Gosling',
+        email: 'ryangosling@gmail.com',
+        address: '123 Berry St.',
+        international: 'No',
+        payment: 'Mail Check'
+      }
+    };
+  },
+  components: { AdminHeader }
 }
+
 </script>
 
 <style>

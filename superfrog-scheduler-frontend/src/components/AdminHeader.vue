@@ -5,7 +5,7 @@
             <font-awesome-icon class="header-icon" icon ="user"/>
         </RouterLink>
 
-        <span id="admin-name">Lindsey</span>
+        <span id="admin-name">Ryan</span>
     </div>
 </template>
 
