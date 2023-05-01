@@ -27,5 +27,9 @@
     color: black;
     padding: 5px;
 }
+img {
+  display: block;
+  margin: 20px auto;
+}
 
 </style>

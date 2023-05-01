@@ -99,7 +99,7 @@ button {
 }
 
 button:hover {
-  background-color: #eee;
+  background-color: #ccc;
 }
 
 .checkmark {

@@ -6,15 +6,15 @@
 <template>
   <SFSSideBar style="position: fixed; height: 100vh; width: 25%; top: 0; left: 0;"></SFSSideBar>
   <div class="right-col">
-    <div id="wrapper">
-      <AdminHeader></AdminHeader>
-      <div class="container">
+      <AdminHeader />
+      <div id="wrapper" style="height: 100%;">
+      <div class="container" style="height: 100%;">
         <h1>Sign-Up For Appearances</h1>
         <ul>
           <li v-for="(event, index) in events" :key="index">
-            <div class="event-title">{{ event.eventName }}</div>
+            <div class="event-title">{{ event.eventTitle }}</div>
             <div class="event-date">{{ event.date }}</div>
-            <div class="event-location">{{ event.location }}</div>
+            <div class="event-location">{{ event.eventAddress }}</div>
             <div class="event-signup">
               <div v-if="event.isSignedUp">
                 <div class="superFrog-name">{{ event.superFrogFirstName }} {{ event.superFrogLastName }}</div>
@@ -47,9 +47,9 @@
         return {
             events: [
                 {
-                    eventName: "Wedding",
+                    eventTitle: "Wedding",
                     date: "2023-05-05",
-                    location: "123 Main Street",
+                    eventAddress: "123 Main Street",
                     isSignedUp: false,
                     superFrogFirstName: "",
                     superFrogLastName: "",
@@ -58,9 +58,9 @@
                     SFS_Id: ""
                 },
                 {
-                    eventName: "Public Event",
+                    eventTitle: "Public Event",
                     date: "2023-07-19",
-                    location: "12 Convention Center Drive",
+                    eventAddress: "12 Convention Center Drive",
                     isSignedUp: true,
                     superFrogFirstName: "Annalise",
                     superFrogLastName: "Gadbois",
@@ -69,9 +69,9 @@
                     SFS_Id: "12345456"
                 },
                 {
-                    eventName: "Graduation Party",
+                    eventTitle: "Graduation Party",
                     date: "2023-05-15",
-                    location: "567 Berry Street",
+                    eventAddress: "567 Berry Street",
                     isSignedUp: false,
                     superFrogFirstName: "",
                     superFrogLastName: "",
@@ -102,8 +102,11 @@
   
   <style>
 .right-col {
-  margin-left: 20%; /* set margin to the width of the sidebar */
-  width: 80%; /* set the width to the remaining space */
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 66vw;
+  height: 100%;
 }
 
 #wrapper {
@@ -116,13 +119,6 @@
     margin: 0 auto;
     padding: 20px;
     background-color: #4D1979;
-    color: #444;
-  }
-  
-  h1 {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 20px;
     color: #fff;
   }
   
@@ -182,4 +178,9 @@
     color: #444;
     cursor: pointer;
   }
+
+  button:hover {
+  background-color: #ccc;
+}
+
   </style>

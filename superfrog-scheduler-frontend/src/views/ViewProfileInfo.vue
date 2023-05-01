@@ -5,9 +5,9 @@ import SFSSideBar from '../components/SFSSideBar.vue';
 <template>
   <SFSSideBar style="position: fixed; height: 100vh; width: 25%; top: 0; left: 0;"></SFSSideBar>
   <div class="right-col">
-    <div id="wrapper">
-      <AdminHeader></AdminHeader>
-      <div class="profile-container">
+    <AdminHeader />
+    <div id="wrapper" style="height: 100%;">
+      <div class="profile-container" style="height: 100%">
         <h1>{{ user.name }}'s Profile</h1>
         <!-- <h1>Ryan's Profile</h1> -->
         <p>First Name: {{ user.firstName }}</p>
@@ -16,19 +16,14 @@ import SFSSideBar from '../components/SFSSideBar.vue';
         <p>Address: {{ user.address }}</p>
         <p>isInternational: {{ user.international }}</p>
         <p>Payment Type: {{ user.payment }}</p>
+      <!-- </div> -->
+        <div class="form-group">
+          <router-link to="/edit-student-profile">
+            <button type="button" class="btn">Edit Profile</button>
+          </router-link>
+        </div>
       </div>
-      <!-- <div class="button-group"> -->
-              <!-- <router-link to="/landing-page">
-                <button type="button" class="btn">Home</button>
-              </router-link>
-            </div> -->
-      
-            <div class="form-group">
-              <router-link to="/edit-student-profile">
-                <button type="button" class="btn">Edit Profile</button>
-              </router-link>
-            </div>
-          </div>
+    </div>
   </div>
 </template>
 
@@ -63,17 +58,17 @@ export default {
 }
 
 .profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
   background-color: #4D1979;
   color: #fff;
-  padding: 20px;
-  max-width: 800px;
-  max-height: 100%;
-  margin: 0 auto;
 }
 
 .button-group {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
   }
 
 .btn {
@@ -93,9 +88,10 @@ export default {
     color: #fff;
   }
   .right-col {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 66vw;
-  }
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 66vw;
+  height: 100%;
+}
 </style>
