@@ -21,14 +21,6 @@ let routes = [
                 component: LandingPage,
             },
             {
-                path: 'add-student',
-                name: 'add-student',
-                meta: {
-                    requiresAuth: false,
-                },
-                component: () => import('../views/AddStudentView.vue')
-            },
-            {
                 path: 'list-students',
                 name: 'list-students',
                 meta: {
@@ -125,14 +117,6 @@ let routes = [
                 component: () => import('../views/ViewProfileInfo.vue')
             },
             {
-                path: '/deactivate',
-                name: 'deactivate',
-                meta: {
-                    requiresAuth: false,
-                },
-                component: () => import('../views/DeactivateStudentView.vue')
-            },
-            {
                 path: '/edit-request-details',
                 name: 'edit-request-details',
                 meta: {
@@ -163,6 +147,46 @@ let routes = [
                     requiresAuth: false,
                 },
                 component: () => import('../views/RangeView.vue')
+            },
+
+            //UC 11 : Spirit Director cancels student sing-up of an appearance request
+            {
+                path: '/cancel-signup',
+                name: '/cancel-signup',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/CancelSignUpView.vue')
+            },
+
+            //UC 12 : Spirit Director cancels request
+            {
+                path: '/cancel-request',
+                name: '/cancel-request',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/CancelRequestView.vue')
+            },
+
+            //UC 13 : Spirit Director creates student account
+            {
+                path: 'add-student',
+                name: 'add-student',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/AddStudentView.vue')
+            },
+
+            //UC 14 : Spirit Director deactivates a student account
+            {
+                path: '/deactivate',
+                name: 'deactivate',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/DeactivateStudentView.vue')
             },
 
             //UC 15: Spirit Director finds SuperFrog Students

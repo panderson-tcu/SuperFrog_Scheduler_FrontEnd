@@ -30,6 +30,9 @@
               <RouterLink to="/list-students" class="menu-label"
                 >View All Students</RouterLink
               >
+              <RouterLink to="/deactivate" class="menu-label"
+                >Deactivate Student</RouterLink
+              >
             </div>
           </div>
           <div id="requests-menu">
@@ -42,6 +45,12 @@
               >
               <RouterLink to="/list-requests" class="menu-label"
                 >View All Requests</RouterLink
+              >
+              <RouterLink to="/cancel-signup" class="menu-label"
+                >Cancel Sign-Up</RouterLink
+              >
+              <RouterLink to="/cancel-request" class="menu-label"
+                >Cancel Request</RouterLink
               >
             </div>
           </div>
