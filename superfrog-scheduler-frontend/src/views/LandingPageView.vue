@@ -13,7 +13,7 @@
             wedding, grad party, and more!
           </h3>
         </div>
-        <img src="src/img/SuperFrogSITE.JPG" alt="" />
+        <img src="../assets/img/SuperFrogSITE.JPG" alt="" />
       </div>
 
       <!--buttons-->
