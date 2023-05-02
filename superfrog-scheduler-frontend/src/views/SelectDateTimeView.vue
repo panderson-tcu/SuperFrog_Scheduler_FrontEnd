@@ -3,7 +3,7 @@ import AdminHeader from '../components/AdminHeader.vue';
 </script>
 <template>
   <div id="wrapper">
-    <AdminHeader></AdminHeader>
+    <!-- <AdminHeader></AdminHeader> -->
       <div class="form-container">
         <h1 class="form-header">Select Date Time</h1>
         <form>
@@ -11,8 +11,17 @@ import AdminHeader from '../components/AdminHeader.vue';
             <label for="date">Date:</label>
             <input type="date" id="date" v-model="date">
           </div>
+          <div class="form-group">
+            <label for="start-time">Start Time:</label>
+            <input type="time" id="start-time" v-model="startTime">
+          </div>
+    
+          <div class="form-group">
+            <label for="end-time">End Time:</label>
+            <input type="time" id="end-time" v-model="endTime">
+          </div>
 
-          <table class="table-wrapper">
+          <!-- <table class="table-wrapper">
             <tr>
                 <th>Time</th>
                 <th>Unavlaible times</th>
@@ -61,7 +70,7 @@ import AdminHeader from '../components/AdminHeader.vue';
                 <td>8pm</td>
                 <td></td> 
             </tr>
-          </table>
+          </table> -->
 
           <div class="button-group">
             <router-link to="/complete-form">
@@ -118,7 +127,7 @@ import AdminHeader from '../components/AdminHeader.vue';
     margin-bottom: 20px;
   }
 
-  .table-wrapper{
+  /* .table-wrapper{
     background-color: white;
     color: black;
   }
@@ -132,7 +141,7 @@ import AdminHeader from '../components/AdminHeader.vue';
   td {
     padding: 10px;
     margin: auto;
-  }
+  } */
 
   .button-group {
     display: flex;

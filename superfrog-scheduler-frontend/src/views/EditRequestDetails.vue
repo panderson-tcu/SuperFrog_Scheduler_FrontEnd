@@ -3,7 +3,6 @@ import AdminHeader from '../components/AdminHeader.vue';
 </script>
 <template>
   <div id="wrapper">
-    <AdminHeader></AdminHeader>
       <div class="form-container">
         <h1 class="form-header">Edit Request Details</h1>
         <form>
@@ -40,13 +39,13 @@ import AdminHeader from '../components/AdminHeader.vue';
           </div>
     
           <div class="button-group">
-            <router-link to="/policy-agreement">
-              <button type="submit" class="btn">Continue</button>
+            <router-link to="/landing-page">
+              <button type="submit" class="btn">Submit</button>
             </router-link>
           </div>
     
           <div class="form-group">
-            <router-link to="/select-date-time">
+            <router-link to="/landing-page">
               <button type="button" class="btn">Back</button>
             </router-link>
           </div> 

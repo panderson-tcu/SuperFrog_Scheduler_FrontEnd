@@ -3,62 +3,69 @@ import AdminHeader from '../components/AdminHeader.vue';
 </script>
 <template>
   <div id="wrapper">
-    <AdminHeader></AdminHeader>
+    <!-- <AdminHeader></AdminHeader> -->
       <div class="form-container">
         <h1 class="form-header">Complete Form</h1>
         <form>
-          <div class="form-group">
-            <label for="date">Date:</label>
-            <input type="date" id="date" v-model="date">
-          </div>
-    
-          <div class="form-group">
-            <label for="start-time">Start Time:</label>
-            <input type="time" id="start-time" v-model="startTime">
-          </div>
-    
-          <div class="form-group">
-            <label for="end-time">End Time:</label>
-            <input type="time" id="end-time" v-model="endTime">
-          </div>
-    
+          <h2>Selected Date</h2>
+          <table>
+            <tr>
+              <th>Date</th>
+                <th>{{ appearance.date }}</th>
+            </tr>
+            <tr>
+              <th>Start Time</th>
+              <th>{{ appearance.beginningTime }}</th>
+            </tr>
+            <tr>
+              <th>End Time</th>
+              <th>{{ appearance.endingTime }}</th>
+            </tr>
+          </table>
+          <h2>Event Type</h2>
+            <label for="eventType">Event Type:</label>
+              <select id="tcu" v-model="eventType">
+                <option value="false">TCU</option>
+                <option value="true">Private</option>
+              </select>
+
           <h2>Personal Contact Information</h2>
     
           <div class="form-group">
             <label for="first-name">Contact First Name:</label>
-            <input type="text" id="first-name" v-model="firstName">
+            <input type="text" id="first-name" v-model="C_firstName">
           </div>
     
           <div class="form-group">
             <label for="last-name">Contact Last Name:</label>
-            <input type="text" id="last-name" v-model="lastName">
+            <input type="text" id="last-name" v-model="C_lastName">
           </div>
     
           <div class="form-group">
             <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" v-model="phone">
+            <input type="text" id="phone" v-model="C_phone">
           </div>
     
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" v-model="email">
+            <input type="email" id="email" v-model="C_email">
           </div>
     
           <h2>Event Information</h2>
     
           <div class="form-group">
             <label for="title">Event Title:</label>
-            <textarea id="event-title" v-model="title"></textarea>
+            <textarea id="event-title" v-model="eventTitle"></textarea>
           </div>
     
           <div class="form-group">
             <label for="org-name">Name of Organization:</label>
-            <textarea id="org-name" v-model="orgName"></textarea>
+            <textarea id="org-name" v-model="organizationName"></textarea>
           </div>
     
           <div class="form-group">
             <label for="address">Address of Appearance:</label>
-            <textarea id="address" v-model="address"></textarea>
+            <textarea id="address" v-model="eventAddress"></textarea>
           </div>
     
           <div class="button-group">
@@ -80,18 +87,21 @@ import AdminHeader from '../components/AdminHeader.vue';
   <script>
   export default {
     data() {
-        return {
-            date: "",
-            startTime: "",
-            endTime: "",
-            firstName: "",
-            lastName: "",
-            phone: "",
-            email: "",
-            title: "",
-            orgName: "",
-            address: ""
-        };
+      return {
+        appearance: {
+          date: "",
+          beginningTime: "",
+          endingTime: "",
+        },
+        eventType: "",
+        C_firstName: "",
+        C_lastName: "",
+        C_phone: "",
+        C_email: "",
+        eventTitle: "",
+        organizationName: "",
+        eventAddress: ""
+      };
     },
     components: { AdminHeader }
 }
@@ -130,6 +140,24 @@ import AdminHeader from '../components/AdminHeader.vue';
     justify-content: space-between;
   }
   
+  .table-wrapper{
+    background-color: white;
+    color: black;
+  }
+
+  td, th {
+    border: 1px solid black;
+    background-color: #fff;
+    text-align: left;
+    padding: 8px;
+    color: #444;
+  }
+
+  td {
+    padding: 10px;
+    margin: auto;
+  }
+
   label {
     display: block;
     font-size: 18px;

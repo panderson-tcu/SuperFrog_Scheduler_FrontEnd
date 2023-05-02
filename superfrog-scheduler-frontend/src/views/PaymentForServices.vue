@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
     <!--Admin side bar-->
-    <AdminSideBar style="position: fixed; height: 100vh; width: 25%; top: 0; left: 0;"></AdminSideBar>
+    <AdminSideBar />
     <div id="main-col">
       <AdminHeader />
       <!--body-->
@@ -13,7 +13,7 @@
           margin-left: 30px;
         "
       >
-        <h1>View a Super Frog Student Account!</h1>
+        <h1>TCU Honorarium - Payment for Services</h1>
 
         <form
           @submit.prevent="searchStudents"
@@ -33,12 +33,35 @@
           <button @click="sortData">Sort</button>
         </div>
 
+        <!--input start date/ end date-->
+        <div style="margin-top: 10px">
+          <label style="margin-right: 5px" for="begin-date">Begin Date: </label>
+          <input
+            style="margin-right: 5px"
+            type="text"
+            id="begin-date"
+            v-model="beginDate"
+          />
+
+          <label style="margin-right: 5px" for="end-date">End Date: </label>
+          <input
+            style="margin-right: 5px"
+            type="text"
+            id="end-date"
+            v-model="endDate"
+          />
+        </div>
+
+        <div style="margin-top: 10px">
+          <button @click="showPopup">GENERATE TCU HONORARIUM</button>
+        </div>
+
         <div>
-          <h2>Click on each row to view individual students</h2>
           <table>
-            <!--table head-->
             <thead>
               <tr>
+                <th></th>
+                <!-- new column for checkboxes -->
                 <th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -49,13 +72,15 @@
             </thead>
             <!--table body-->
             <tbody v-if="displayedData">
-              <tr
-                v-for="(item, index) in displayedData"
-                :key="index"
-                @click="showPopup(item)"
-              >
+              <tr v-for="(item, index) in displayedData" :key="index">
+                <td>
+                  <input
+                    type="checkbox"
+                    v-model="requestIds"
+                    :value="item.id"
+                  />
+                </td>
                 <td>{{ item.id }}</td>
-
                 <td>{{ item.firstName }}</td>
                 <td>{{ item.lastName }}</td>
                 <td>{{ item.email }}</td>
@@ -75,121 +100,59 @@
 
           <div style="height: 100px"></div>
 
-
+          <!--pop up-->
           <div class="popup" v-if="popup" style="">
-            <!--Student Account information-->
-            <h2 style="font-weight: bold; margin-left: 30px; margin-top: 30px;">I. Student Account Information</h2>
+            <div style="height: 80px"></div>
+
+            <div
+              style="
+                position: fixed;
+                top: 0;
+                right: 0;
+                margin-right: 20px;
+                margin-top: 10px;
+              "
+            >
+              <button @click="hidePopup">X</button>
+            </div>
+
+            <h2 style="font-weight: bold; margin-left: 30px; margin-top: 30px; margin-bottom: 30px;"> TCU Honorarium - Payment for Services</h2>
             <table style="width: 80%; margin-left: 30px; margin-bottom: 30px; margin: 0 auto;">
                 <!--table head-->
                 <thead>
                   <tr>
-                    <th>ID</th>
+                    <th>Student ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Address</th>
+                    <th>Amount</th>
+                    <th>Begin</th>
+                    <th>End</th>
                   </tr>
                 </thead>
                 <!--table body-->
                 <tbody>
-                  <tr>
-                    <td>{{ selectedData.id }}</td>
-                    <td>{{ selectedData.firstName }}</td>
-                    <td>{{ selectedData.lastName }}</td>
-                    <td>{{ selectedData.email }}</td>
-                    <td>{{ selectedData.phoneNumber }}</td>
-                    <td>{{ selectedData.address }}</td>
+                  <tr v-for="(item, index) in honorarium" :key="index">
+                    <td>{{ item.studentId }}</td>
+                    <td>{{ item.firstName }}</td>
+                    <td>{{ item.lastName }}</td>
+                    <td>{{ item.amount }} USD</td>
+                    <td>{{ beginDate }}</td>
+                    <td>{{ endDate }}</td>
                   </tr>
                 </tbody>
               </table>
 
 
-             <!--Signed Up Appearances information-->
-            <h2 style="font-weight: bold; margin-left: 30px; margin-top: 30px;">II. Signed Up Appearances</h2>
-            <table style="width: 90%; margin-left: 30px; margin-bottom: 300px; margin: 0 auto;">
-                <!--table head-->
-                <thead>
-                  <tr>
-                    <th>Event ID</th>
-                    <th>Customer First Name</th>
-                    <th>Customer Last Name</th>
-                    <th>Phone</th>
-                    <th>Begin At</th>
-                    <th>End At</th>
-                    <th>Event Title</th>
-                    <th>Event Address</th>
-                    <th>Event Type</th>
-                    <th>Organizer</th>
-                    <th>STATUS</th>
-
-                  </tr>
-                </thead>
-                <!--table body-->
-                <tbody v-if="assignedAppearances">
-                  <tr v-for="(item, index) in assignedAppearances" :key="index">
-                    <td>{{ item.E_id}}</td>
-                    <td>{{ item.C_firstName }}</td>
-                    <td>{{ item.C_lastName }}</td>
-                    <td>{{ item.C_phone }}</td>
-                    <td>{{ item.beginning_time }}</td>
-                    <td>{{ item.ending_time }}</td>
-                    <td>{{ item.eventTitle }}</td>
-                    <td>{{ item.eventAddress }}</td>
-                    <td>{{ item.eventType }}</td>
-                    <td>{{ item.organizationName }}</td>
-                    <td>{{ item.status }}</td>
-                  </tr>
-                </tbody>
-              </table>
 
 
-              <!--Signed Up Appearances information-->
-            <h2 style="font-weight: bold; margin-left: 30px; margin-top: 30px;">III. Completed Appearances</h2>
-            <table style="width: 90%; margin-left: 30px; margin-bottom: 300px; margin: 0 auto;">
-                <!--table head-->
-                <thead>
-                  <tr>
-                    <th>Event ID</th>
-                    <th>Customer First Name</th>
-                    <th>Customer Last Name</th>
-                    <th>Phone</th>
-                    <th>Begin At</th>
-                    <th>End At</th>
-                    <th>Event Title</th>
-                    <th>Event Address</th>
-                    <th>Event Type</th>
-                    <th>Organizer</th>
-                    <th>STATUS</th>
-
-                  </tr>
-                </thead>
-                <!--table body-->
-                <tbody v-if="completedAppearances">
-                  <tr v-for="(item, index) in completedAppearances" :key="index">
-                    <td>{{ item.E_id}}</td>
-                    <td>{{ item.C_firstName }}</td>
-                    <td>{{ item.C_lastName }}</td>
-                    <td>{{ item.C_phone }}</td>
-                    <td>{{ item.beginning_time }}</td>
-                    <td>{{ item.ending_time }}</td>
-                    <td>{{ item.eventTitle }}</td>
-                    <td>{{ item.eventAddress }}</td>
-                    <td>{{ item.eventType }}</td>
-                    <td>{{ item.organizationName }}</td>
-                    <td>{{ item.status }}</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <div style="height: 80px"></div>
 
 
-              <div style="position:fixed; top:0; right: 0; margin-right: 20px; margin-top: 10px;">
-                <button @click="hidePopup">X</button>
-              </div>
-            
+
+
+
           </div>
+
+          <!--end of pop up-->
         </div>
       </div>
     </div>
@@ -209,16 +172,19 @@ import axios from "axios";
 export default {
   data() {
     return {
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-      email: "",
-      popup: false,
-      responseAddress: "",
-      completedAppearances: [],
-      assignedAppearances: [],
-      selectedData: {},
+      beginDate: "",
+      endDate: "",
+      requestIds: [],
+      paymentPeriod: {
+        beginDate: this.beginDate,
+        endDate: this.endDate,
+      },
 
+      honorarium: [],
+
+      popup: false,
+
+      selectedData: {},
       dataList: [],
       currentPage: 1,
       itemsPerPage: 4,
@@ -252,23 +218,28 @@ export default {
 
     sortData() {
       this.dataList.sort((a, b) => {
+        console.log(this.requestIds);
+        console.log(this.beginDate);
+        console.log(this.endDate);
         return a[this.selectedOption].localeCompare(b[this.selectedOption]);
       });
     },
     showPopup(data) {
       this.popup = true;
       this.selectedData = data;
-      let student_id = this.selectedData["id"];
-      console.log(student_id);
+
+      console.log(this.requestIds);
+      console.log(this.beginDate);
+      console.log(this.endDate);
       //fetch the account data
       axios
-        .get(`http://localhost:8080/api/v1/students/${student_id}`)
+        .post(`http://localhost:8080/api/v1/payment-forms`, {
+          requestIds: this.requestIds,
+          paymentPeriod: this.paymentPeriod,
+        })
         .then((response) => {
-          this.completedAppearances = response.data.data["completed_appearances"];
-          this.assignedAppearances = response.data.data["assigned_appearances"];
-          console.log(this.completedAppearances);
-          console.log(this.assignedAppearances);
-
+          this.honorarium = response.data.data;
+          console.log(response.data.data);
         })
         .catch((error) => {
           console.log(error);
@@ -292,19 +263,14 @@ export default {
 
 <style>
 #wrapper {
-  justify-content: center;
-    align-items: center;
-    background-color: #4D1979;
-    min-height: 100%;
-    min-width: 100%;
-    color: white;
+  color: white;
+  width: auto;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 #main-col {
-  position: absolute;
-  top:0;
-  right:0;
   height: 100%;
-  width: 75%;
+  width: 100%;
   background-color: #4d1979;
   flex-direction: column;
   justify-content: flex-start;
@@ -396,7 +362,7 @@ tr:hover td {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  height: 500px; 
+  height: 500px;
   overflow: auto;
 }
 .popup-content {
