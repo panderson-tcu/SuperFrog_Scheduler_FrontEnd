@@ -2,25 +2,27 @@
   <div
       style="
         height: 100%;
-        width: 20%;
+        width: 23%;
         background-color: white;
         color: white;
-        background-color: #301934;
+        background-color: #4D1979;
       "
     >
       <div id="sidebar-main">
         <div style="flex-direction: column">
           <img
             style="margin-top: 15%; height: 90px; width: 90px"
-            src="../assets/img/SuperFrogLogo.png"
+            src="../img/SuperFrog-TCU.png"
             alt=""
           />
-          <div>Super Frog Student</div>
+          <div class="menu-label">Spirit Director</div>
         </div>
 
         <div id="sidebar-nav-button">
           <div id="sf-student-menu">
+            <font-awesome-icon class="sidebar-icon" icon ="address-book"/>
             <span class="menu-label">SuperFrog Students</span>
+            <font-awesome-icon class="sidebar-icon" icon ="circle-chevron-up"/>
             <div class="dropdown" id="sf-menu-dropdown">
               <RouterLink to="/add-student" class="menu-label"
                 >Add a New Student</RouterLink
@@ -31,7 +33,9 @@
             </div>
           </div>
           <div id="requests-menu">
+            <font-awesome-icon class="sidebar-icon" icon ="bars-progress"/>
             <span class="menu-label">Requests</span>
+            <font-awesome-icon class="sidebar-icon" icon ="circle-chevron-up"/>
             <div class="dropdown" id="requests-menu-dropdown">
               <RouterLink to="/select-date-time" class="menu-label"
                 >Add a New Request</RouterLink
@@ -42,9 +46,11 @@
             </div>
           </div>
           <div id="calendar">
+            <font-awesome-icon class="sidebar-icon" icon ="calendar-days"/>
             <span class="menu-label">Calendar</span>
           </div>
           <div id="reports">
+            <font-awesome-icon class="sidebar-icon" icon ="book"/>
             <span class="menu-label">Reports</span>
           </div>
         </div>
@@ -60,7 +66,7 @@
   color: white;
   background-color: #301934;
   height: 100%;
-  width: 15%;
+  /* width: 23%; */
   align-content: center;
   align-items: center;
   justify-content: center;
@@ -76,9 +82,9 @@
   margin-left: 20%;
   margin-top: 20%;
 }
-.icon {
+.sidebar-icon {
   margin: 5px;
-  font-size: px;
+  font-size: 30px;
 }
 #calendar > * {
   display: inline;
@@ -88,19 +94,12 @@
 }
 
 .menu-label {
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 20px;
+  /* font-weight: bold; */
   color: white;
 }
 
 .dropdown > .menu-label {
   display: block;
 }
-<<<<<<< HEAD
 </style>
-=======
-
-
-
-</style>
->>>>>>> main

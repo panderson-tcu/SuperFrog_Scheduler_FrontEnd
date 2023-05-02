@@ -13,26 +13,36 @@
             wedding, grad party, and more!
           </h3>
         </div>
-        <img src="src/img/SuperFrogSITE.JPG" alt="" />
+        <img src="src/assets/img/SuperFrogSITE.JPG" alt="" />
       </div>
 
       <!--buttons-->
       <div id="button-row">
         <div id="price-button">
-          <font-awesome-icon class="icon" icon="money-bill-1" />
-          <div class="label">Price</div>
+          <RouterLink to="/price-table">
+            <font-awesome-icon class="icon" icon="money-bill-1" />
+            <div class="label">Price</div>
+          </RouterLink>
+          
         </div>
         <div id="range-button">
-          <font-awesome-icon class="icon" icon="location-dot" />
-          <div class="label">Range</div>
+          <RouterLink to="/range">
+            <font-awesome-icon class="icon" icon="location-dot" />
+            <div class="label">Range</div>
+          </RouterLink>
         </div>
         <div id="request-button">
-          <font-awesome-icon class="icon" icon="calendar-days" />
-          <div class="label">Request</div>
+          <RouterLink to="/select-date-time">
+                    <font-awesome-icon class="icon" icon="calendar-days" />
+                    <div class="label">Request</div>
+          </RouterLink>
         </div>
         <div id="modify-request-button">
-          <font-awesome-icon class="icon" icon="pencil" />
-          <div class="label">Modify</div>
+          <RouterLink to="/edit-request-details">
+            <font-awesome-icon class="icon" icon="pencil" />
+            <div class="label">Modify</div>
+          </RouterLink>
+          
         </div>
       </div>
 

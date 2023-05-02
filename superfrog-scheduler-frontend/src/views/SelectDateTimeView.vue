@@ -3,7 +3,7 @@ import AdminHeader from '../components/AdminHeader.vue';
 </script>
 <template>
   <div id="wrapper">
-    <AdminHeader></AdminHeader>
+    <!-- <AdminHeader></AdminHeader> -->
       <div class="form-container">
         <h1 class="form-header">Select Date Time</h1>
         <form>

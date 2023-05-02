@@ -140,6 +140,30 @@ let routes = [
                 },
                 component: () => import('../views/EditRequestDetails.vue')
             },
+            {
+                path: '/sign-in',
+                name: 'sign-in',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/SignInView.vue')
+            },
+            {
+                path: '/price-table',
+                name: 'price-table',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/PriceTableView.vue')
+            },
+            {
+                path: '/range',
+                name: 'range',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/RangeView.vue')
+            },
         ]
     },
 ];

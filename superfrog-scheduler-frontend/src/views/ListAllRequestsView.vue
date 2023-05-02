@@ -60,7 +60,7 @@
 
 <style>
 #table-wrapper {
-    background-color: white;
+    background-color: #4D1979;
     margin: 5px;
     padding-top: 341px;
     padding-bottom: 341px;
@@ -73,9 +73,11 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  border: 1px solid red;
   text-align: left;
   padding: 8px;
+  color: white;
+  /* background-color: white; */
 }
 
 td {
@@ -83,9 +85,9 @@ td {
     margin: auto;
 }
 
-th {
+/* th {
     background-color: rgb(38, 145, 216);
-}
+} */
 #sidebar-wrapper {
     max-width: 30vw;
     height: 100vh;
