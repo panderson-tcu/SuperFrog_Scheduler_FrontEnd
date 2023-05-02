@@ -3,7 +3,7 @@
 </script>
 <template>
         <div id="wrapper">
-            <AdminHeader></AdminHeader>
+            <!-- <AdminHeader></AdminHeader> -->
             <div id="header">
                 <div id="text">
                     <h1>SuperFrog Scheduler</h1><br>

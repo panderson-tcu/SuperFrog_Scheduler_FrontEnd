@@ -122,12 +122,35 @@
     ON GAME DAYS - Appearances will not be accepted. <br> We appreciate your understanding and apologize for any inconvenience.
 </p>
         </div>
-        
+        <div id="back-home">
+            <RouterLink to="landing-page">
+                <button type="button" class="btn">Back</button>
+            </RouterLink>
+        </div>        
     </div>
 
 </template>
 
 <style>
+
+#back-home {
+    margin: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.btn {
+    display: block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #4D1979;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin: auto;
+    width: fit-content;
+}
 table {
     margin: auto;
 }
@@ -147,7 +170,7 @@ table {
     background-color: white;
     margin: auto;
     width: fit-content;
-    padding: 20px
+    padding: 20px;
 }
 
 #price-table {
