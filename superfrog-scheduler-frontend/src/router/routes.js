@@ -171,8 +171,8 @@ let routes = [
 
             //UC 13 : Spirit Director creates student account
             {
-                path: 'add-student',
-                name: 'add-student',
+                path: '/add-student',
+                name: '/add-student',
                 meta: {
                     requiresAuth: false,
                 },
@@ -182,7 +182,7 @@ let routes = [
             //UC 14 : Spirit Director deactivates a student account
             {
                 path: '/deactivate',
-                name: 'deactivate',
+                name: '/deactivate',
                 meta: {
                     requiresAuth: false,
                 },
