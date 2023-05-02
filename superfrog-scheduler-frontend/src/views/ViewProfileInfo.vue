@@ -8,7 +8,7 @@ import SFSSideBar from '../components/SFSSideBar.vue';
     <AdminHeader />
     <div id="wrapper" style="height: 100%;">
       <div class="profile-container" style="height: 100%">
-        <h1>{{ user.name }}'s Profile</h1>
+        <h1>{{ user.firstName }}'s Profile</h1>
         <!-- <h1>Ryan's Profile</h1> -->
         <p>First Name: {{ user.firstName }}</p>
         <p>Last Name: {{ user.lastName }}</p>
@@ -48,27 +48,21 @@ export default {
 
 <style>
 #wrapper {
-    /* position: relative; */
-    justify-content: center;
-    align-items: center;
-    background-color: #4D1979;
-    min-height: 100%;
-    min-width: 100%;
-    color: white;
+  position: relative;
+  min-height: 100vh; /* set the height to be at least the viewport height */
 }
 
-.profile-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+ .profile-container {
   background-color: #4D1979;
-  color: #fff;
-}
+    color: #fff;
+    width: 85%;
+    margin-top: 5%;
+} 
 
 .button-group {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
 .btn {
@@ -91,7 +85,7 @@ export default {
   position: fixed;
   top: 0;
   right: 0;
-  width: 66vw;
+  width: 68vw;
   height: 100%;
 }
 </style>

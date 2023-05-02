@@ -4,7 +4,7 @@
 </script>
 
 <template>
-    <SFSSideBar style="position: fixed; height: 100vh; width: 25%; top: 0; left: 0;"></SFSSideBar>
+    <SFSSideBar style="position: fixed; height: 100vh; width: 25%; top: 0; left: 0; max-height: 100vh; overflow-y: scroll;"></SFSSideBar>
     <div class="right-col">
       <admin-header />
       <div id="wrapper" style="height: 100%;">
@@ -73,27 +73,32 @@
   </script>
   
   <style>
+
   #wrapper {
-    /* position: relative; */
-    justify-content: center;
-    align-items: center;
-    background-color: #4D1979;
-    color: white;
+  position: relative;
 }
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+
+.form-container {
+  /* max-width: 800px; */
+    /* margin: 0 auto;
+    padding: 20px; */
     background-color: #4D1979;
-    color: #444;
-  }
+    color: #fff;
+    width: 90%;
+    margin-top: 5%;
+}
   
   h1 {
-    font-size: 32px;
     font-weight: 700;
-    margin-bottom: 20px;
     color: #fff;
   }
+  
+  button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
   
   .form-group {
     margin-bottom: 20px;
@@ -103,7 +108,7 @@
     display: block;
     font-size: 18px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     color: #fff;
   }
   
@@ -130,12 +135,11 @@
     -moz-appearance: none;
   }
   .right-col {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 66vw;
-    max-width: 100%;
-    max-height: 100%;
-  }
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 68vw;
+  height: 100%;
+}
 
 </style>

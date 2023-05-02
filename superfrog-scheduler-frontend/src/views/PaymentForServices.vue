@@ -167,7 +167,7 @@
 <script>
 import AdminHeader from "../components/AdminHeader.vue";
 import AdminSideBar from "../components/AdminSideBar.vue";
-import axios from "axios";
+import api from "@/apis/config.js";
 
 export default {
   data() {
@@ -205,10 +205,10 @@ export default {
   },
   methods: {
     searchStudents() {
-      axios
+      api
         .get(`http://localhost:8080/api/v1/students/find_all`)
         .then((response) => {
-          this.dataList = response.data.data;
+          this.dataList = response.data;
           console.log(this.dataList);
         })
         .catch((error) => {
@@ -232,14 +232,14 @@ export default {
       console.log(this.beginDate);
       console.log(this.endDate);
       //fetch the account data
-      axios
+      api
         .post(`http://localhost:8080/api/v1/payment-forms`, {
           requestIds: this.requestIds,
           paymentPeriod: this.paymentPeriod,
         })
         .then((response) => {
-          this.honorarium = response.data.data;
-          console.log(response.data.data);
+          this.honorarium = response.data;
+          console.log(response.data);
         })
         .catch((error) => {
           console.log(error);
