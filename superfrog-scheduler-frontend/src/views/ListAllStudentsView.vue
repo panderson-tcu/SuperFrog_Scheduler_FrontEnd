@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
     <!--Admin side bar-->
-    <AdminSideBar style="position: fixed; height: 100vh; width: 25%; top: 0; left: 0;"></AdminSideBar>
+    <AdminSideBar />
     <div id="main-col">
       <AdminHeader />
       <!--body-->
@@ -292,19 +292,14 @@ export default {
 
 <style>
 #wrapper {
-  justify-content: center;
-    align-items: center;
-    background-color: #4D1979;
-    min-height: 100%;
-    min-width: 100%;
-    color: white;
+  color: white;
+  width: auto;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 #main-col {
-  position: absolute;
-  top:0;
-  right:0;
   height: 100%;
-  width: 75%;
+  width: 100%;
   background-color: #4d1979;
   flex-direction: column;
   justify-content: flex-start;
@@ -420,3 +415,4 @@ tr:hover td {
   position: absolute;
 }
 </style>
+

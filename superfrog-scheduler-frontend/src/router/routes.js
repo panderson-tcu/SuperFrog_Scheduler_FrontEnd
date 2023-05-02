@@ -183,7 +183,28 @@ let routes = [
                     requiresAuth: false,
                 },
                 component: () => import('../views/ListAllStudentsView.vue')
-            }
+            },
+
+            //UC 18: Spirit Director generates TCU Honorarium
+            {
+                path: '/payment-form',
+                name: '/payment-form',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/PaymentForServices.vue')
+            },
+
+            //UC 19: Spirit Director generates performance reports
+            {
+                path: '/performance-reports',
+                name: '/performance-reports',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/PerformanceReportView.vue')
+            },
+
         ]
     },
 ];
