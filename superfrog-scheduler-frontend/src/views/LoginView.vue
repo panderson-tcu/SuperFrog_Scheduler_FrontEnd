@@ -2,6 +2,7 @@
 import utils from '@/utils';
 import {Form, Field, ErrorMessage} from 'vee-validate';
 import * as yup from 'yup';
+import {login} from '../utils/userLoginUtils.js'
 
 export default {
   data() {
@@ -18,10 +19,20 @@ export default {
     ErrorMessage,
   },
   methods: {
-    login(values) {
-      console.log(values);
-      utils.userLoginUtils.login(values);
-    },
+    // login(values) {
+    //   console.log(values);
+    //   utils.userLoginUtils.login(values);
+    // },
+    async handleSubmit() {
+            try {
+                const user = await login({
+                    username: this.email,
+                    password: this.password
+                })
+            } catch(err) {
+                console.log(err);
+            }
+        }
   },
 };
 </script>
