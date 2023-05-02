@@ -1,7 +1,8 @@
 <script setup>
   import AdminHeader from '../components/AdminHeader.vue';
-import SFSSideBar from '../components/SFSSideBar.vue';
+  import SFSSideBar from '../components/SFSSideBar.vue';
 </script>
+
 <template>
   <SFSSideBar style="position: fixed; height: 100vh; width: 25%; top: 0; left: 0;"></SFSSideBar>
     <div class="right-col">

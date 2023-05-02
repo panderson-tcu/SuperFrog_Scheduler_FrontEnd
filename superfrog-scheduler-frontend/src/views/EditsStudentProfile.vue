@@ -4,11 +4,11 @@
 </script>
 
 <template>
-  <div class="right-col">
     <SFSSideBar style="position: fixed; height: 100vh; width: 25%; top: 0; left: 0;"></SFSSideBar>
-    <div id="wrapper">
+    <div class="right-col">
       <admin-header />
-        <div class="container">
+      <div id="wrapper" style="height: 100%;">
+        <div class="container" style="height: 100%;">
           <h1>Edit Profile Information</h1>
           <form>
             <div class="form-group">

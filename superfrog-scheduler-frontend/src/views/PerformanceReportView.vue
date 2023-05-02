@@ -159,7 +159,12 @@
             </table>
 
             <div>
-              <button style="display: flex; justify-content: center;" @click="redirectToPdf">Export PDF</button>
+              <button
+                style="display: flex; justify-content: center"
+                @click="redirectToPdf"
+              >
+                Export PDF
+              </button>
             </div>
           </div>
 
@@ -265,7 +270,8 @@ export default {
       this.popup = false;
     },
     redirectToPdf() {
-      window.location.href = "http://localhost:8080/api/v1/performance-reports/export/pdf";
+      window.location.href =
+        "http://localhost:8080/api/v1/performance-reports/export/pdf";
     },
     prevPage() {
       this.currentPage--;
