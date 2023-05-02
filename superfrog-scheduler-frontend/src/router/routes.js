@@ -164,6 +164,47 @@ let routes = [
                 },
                 component: () => import('../views/RangeView.vue')
             },
+
+            //UC 15: Spirit Director finds SuperFrog Students
+            {
+                path: '/find-superfrog-students',
+                name: '/find-superfrog-students',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/SearchStudentView.vue')
+            },
+
+            //UC 16: Spirit Director views SuperFrog Student Account
+            {
+                path: '/view-superfrog-student-account',
+                name: '/view-superfrog-student-account',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/ListAllStudentsView.vue')
+            },
+
+            //UC 18: Spirit Director generates TCU Honorarium
+            {
+                path: '/payment-form',
+                name: '/payment-form',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/PaymentForServices.vue')
+            },
+
+            //UC 19: Spirit Director generates performance reports
+            {
+                path: '/performance-reports',
+                name: '/performance-reports',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/PerformanceReportView.vue')
+            },
+
         ]
     },
 ];
