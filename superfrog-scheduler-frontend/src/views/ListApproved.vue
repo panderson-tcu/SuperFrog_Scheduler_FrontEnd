@@ -16,11 +16,10 @@
                 {{ appearance.eventTitle }}
                 <span v-if="appearance.status === 'complete'" class="checkmark">&#10004;</span>
               </h2>
-              <p>{{ appearance.C_firstName }}</p>
-              <p>{{ appearance.C_lastName }}</p>
-              <p>{{ appearance.LocalDateTime }}</p>
-              <p>{{ appearance.eventAddress }}</p>
-              <p> {{ appearance.status }}</p>
+              <div class="event-info">{{ appearance.C_firstName }} {{ appearance.C_lastName }} | {{ appearance.LocalDateTime }} | {{ appearance.eventAddress }} | {{ appearance.status }}</div>
+              <!-- <p>{{ appearance.LocalDateTime }}</p> -->
+              <!-- <p>{{ appearance.eventAddress }}</p> -->
+              <!-- <p> {{ appearance.status }}</p> -->
               <!-- <p> {{ SuperFrogStudent.complete }}</p> -->
               <div class="button-group">
                 <button @click="cancelAppearance(index)">Cancel</button>
@@ -44,7 +43,7 @@ export default {
                     C_lastName: "Smith",
                     LocalDateTime: "2023-06-15",
                     eventAddress: "Fort Worth, TX",
-                    status: "pending"
+                    status: "Pending"
                 },
                 {
                     eventTitle: "Private Event",
@@ -52,7 +51,7 @@ export default {
                     C_lastName: "Doe",
                     LocalDateTime: "2023-03-15",
                     eventAddress: "Arlington, TX",
-                    status: "pending"
+                    status: "Pending"
                 },
                 {
                     eventTitle: "Wedding",
@@ -60,7 +59,7 @@ export default {
                     C_lastName: "Smith",
                     LocalDateTime: "2023-05-18",
                     eventAddress: "Burlington, TX",
-                    status: "pending"
+                    status: "Pending"
                 },
             ]
         };
@@ -70,7 +69,7 @@ export default {
             this.appearances.splice(index, 1);
         },
         markComplete(index) {
-            this.appearances[index].status = "complete";
+            this.appearances[index].status = "Complete";
         }
     },
     components: { SFSSideBar }
@@ -78,13 +77,45 @@ export default {
 </script>
 
 <style>
-.form-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #4D1979;
-  color: #fff;
+.right-col {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 68vw;
+  height: 100%;
 }
+
+#wrapper {
+  position: relative;
+  min-height: 100vh; /* set the height to be at least the viewport height */
+}
+
+.form-container {
+    background-color: #4D1979;
+    color: #fff;
+    width: 85%;
+    margin-top: 5%;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+
+  .event-info {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #fff;
+  }
 
 .button-group {
   display: flex;
@@ -107,11 +138,4 @@ button:hover {
   margin-left: 10px;
 }
 
-.right-col {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 66vw;
-  height: 100%;
-}
 </style>

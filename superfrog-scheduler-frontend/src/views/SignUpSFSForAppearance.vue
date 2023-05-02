@@ -11,26 +11,25 @@
       <div class="container" style="height: 100%;">
         <h1>Sign-Up For Appearances</h1>
         <ul>
-          <li v-for="(event, index) in events" :key="index">
-            <div class="event-title">{{ event.eventTitle }}</div>
-            <div class="event-date">{{ event.date }}</div>
-            <div class="event-location">{{ event.eventAddress }}</div>
+          <li v-for="(appearance, index) in appearance" :key="index">
+            <div class="event-title">{{ appearance.eventTitle }}</div>
+            <div class="event-info">{{ appearance.C_firstName }} {{ appearance.C_lastName }}| {{ appearance.date }} | {{ appearance.eventAddress }}</div>
             <div class="event-signup">
-              <div v-if="event.isSignedUp">
-                <div class="superFrog-name">{{ event.superFrogFirstName }} {{ event.superFrogLastName }}</div>
-                <div class="superFrog-contact">{{ event.superFrogPhone }} / {{ event.superFrogEmail }} / {{ event.SFS_Id }}</div>
+              <div v-if="appearance.isSignedUp">
+                <div class="superFrog-name">{{ appearance.superFrogFirstName }} {{ appearance.superFrogLastName }}</div>
+                <div class="superFrog-contact">{{ appearance.superFrogPhone }} / {{ appearance.superFrogEmail }} / {{ appearance.SFS_Id }}</div>
                 <button class="remove-btn" @click="removeSignup(index)">Cancel Sign-up</button>
               </div>
               <div v-else>
                 <div class="signup-form">
-                  <input type="text" placeholder="First Name" v-model="event.superFrogFirstName">
-                  <input type="text" placeholder="Last Name" v-model="event.superFrogLastName">
-                  <input type="text" placeholder="Phone" v-model="event.superFrogPhone">
-                  <input type="email" placeholder="Email" v-model="event.superFrogEmail">
-                  <input type="studentId" placeholder="StudentId" v-model="event.SFS_Id">
+                  <input type="text" placeholder="First Name" v-model="appearance.superFrogFirstName">
+                  <input type="text" placeholder="Last Name" v-model="appearance.superFrogLastName">
+                  <input type="text" placeholder="Phone" v-model="appearance.superFrogPhone">
+                  <input type="email" placeholder="Email" v-model="appearance.superFrogEmail">
+                  <input type="studentId" placeholder="StudentId" v-model="appearance.SFS_Id">
     
-                  <button @click="event.SFS_Id ? toggleSignup(index) : null" :disabled="!event.SFS_Id">Sign Up</button>
-                <div v-if="!event.SFS_Id" class="error-message">Please provide your Student ID</div>
+                  <button @click="appearance.SFS_Id ? toggleSignup(index) : null" :disabled="!appearance.SFS_Id">Sign Up</button>
+                <div v-if="!appearance.SFS_Id" class="error-message">Please provide your Student ID</div>
                 </div>
               </div>
             </div>
@@ -45,9 +44,11 @@
   export default {
     data() {
         return {
-            events: [
+          appearance: [
                 {
-                    eventTitle: "Wedding",
+                    eventTitle: "TCU Event",
+                    C_firstName: "John",
+                    C_lastName: "Doe",
                     date: "2023-05-05",
                     eventAddress: "123 Main Street",
                     isSignedUp: false,
@@ -57,42 +58,20 @@
                     superFrogEmail: "",
                     SFS_Id: ""
                 },
-                {
-                    eventTitle: "Public Event",
-                    date: "2023-07-19",
-                    eventAddress: "12 Convention Center Drive",
-                    isSignedUp: true,
-                    superFrogFirstName: "Annalise",
-                    superFrogLastName: "Gadbois",
-                    superFrogPhone: "408-656-4429",
-                    superFrogEmail: "annalise.gadbois@example.com",
-                    SFS_Id: "12345456"
-                },
-                {
-                    eventTitle: "Graduation Party",
-                    date: "2023-05-15",
-                    eventAddress: "567 Berry Street",
-                    isSignedUp: false,
-                    superFrogFirstName: "",
-                    superFrogLastName: "",
-                    superFrogPhone: "",
-                    superFrogEmail: "",
-                    SFS_Id: ""
-                }
             ]
         };
     },
     methods: {
         toggleSignup(index) {
-            this.events[index].isSignedUp = !this.events[index].isSignedUp;
+            this.appearance[index].isSignedUp = !this.appearance[index].isSignedUp;
         },
         removeSignup(index) {
-            this.events[index].isSignedUp = false;
-            this.events[index].superFrogFirstName = "";
-            this.events[index].superFrogLastName = "";
-            this.events[index].superFrogPhone = "";
-            this.events[index].superFrogEmail = "";
-            this.events[index].SFS_Id = "";
+            this.appearance[index].isSignedUp = false;
+            this.appearance[index].superFrogFirstName = "";
+            this.appearance[index].superFrogLastName = "";
+            this.appearance[index].superFrogPhone = "";
+            this.appearance[index].superFrogEmail = "";
+            this.appearance[index].SFS_Id = "";
         }
     },
     components: { SFSSideBar }
@@ -105,7 +84,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 66vw;
+  width: 68vw;
   height: 100%;
 }
 
@@ -115,11 +94,10 @@
 }
 
   .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
     background-color: #4D1979;
     color: #fff;
+    width: 85%;
+    margin-top: 5%;
   }
   
   ul {
@@ -142,14 +120,9 @@
     color: #fff;
   }
   
-  .event-date {
+  .event-info {
     font-size: 18px;
     font-weight: 700;
-    margin-bottom: 10px;
-    color: #fff;
-  }
-
-  .event-location {
     margin-bottom: 10px;
     color: #fff;
   }
@@ -178,9 +151,5 @@
     color: #444;
     cursor: pointer;
   }
-
-  button:hover {
-  background-color: #ccc;
-}
 
   </style>

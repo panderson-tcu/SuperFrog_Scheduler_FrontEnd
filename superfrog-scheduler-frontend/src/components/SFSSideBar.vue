@@ -1,5 +1,6 @@
 <template>
     <div id="sidebar-wrapper">
+        <div id="sidebar-main">
         <img src="src/img/SuperFrog-TCU.png" alt="">
         <div id="sf-student-menu">
             <font-awesome-icon class="icon" icon ="address-book"/>
@@ -27,6 +28,7 @@
             <span class="menu-label">Reports</span>
        </div>
     </div>
+    </div>
 </template>
 
 <style>
@@ -35,6 +37,14 @@
   color: white;
   background-color: #4D1979;
   min-height: 100vh; /* Set a minimum height of the viewport */
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+}
+
+#sidebar-main {
+    margin: 40px;
 }
 
 .icon {
