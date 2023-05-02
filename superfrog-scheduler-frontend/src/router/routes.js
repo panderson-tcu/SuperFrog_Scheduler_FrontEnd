@@ -164,6 +164,26 @@ let routes = [
                 },
                 component: () => import('../views/RangeView.vue')
             },
+
+            //UC 15: Spirit Director finds SuperFrog Students
+            {
+                path: '/find-superfrog-students',
+                name: '/find-superfrog-students',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/SearchStudentView.vue')
+            },
+
+            //UC 16: Spirit Director views SuperFrog Student Account
+            {
+                path: '/view-superfrog-student-account',
+                name: '/view-superfrog-student-account',
+                meta: {
+                    requiresAuth: false,
+                },
+                component: () => import('../views/ListAllStudentsView.vue')
+            }
         ]
     },
 ];
