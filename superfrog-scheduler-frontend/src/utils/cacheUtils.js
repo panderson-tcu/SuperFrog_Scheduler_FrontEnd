@@ -5,6 +5,7 @@ export default {
             cachedValue.expire = new Date().getTime() + expire*1000;
         }
         localStorage.setItem(key, JSON.stringify(cachedValue));
+        //console.log(localStorage.getItem(key));
     },
     get(key) {
         const cachedValueString = localStorage.getItem(key);

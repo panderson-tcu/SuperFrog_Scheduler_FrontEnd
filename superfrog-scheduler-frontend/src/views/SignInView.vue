@@ -1,108 +1,110 @@
-<!-- <script src="https://kit.fontawesome.com/03551b431b.js" crossorigin="anonymous"></script> -->
-
-<template>
-  <div id="wrapper">
-    <div
-      style="
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-      "
-    ></div>
-    <div>
-      <h1>Sign In</h1>
-      <form>
-        <div>
-          <label for="username">Username:</label>
-          <input type="text" id="username" v-model="username" />
-        </div>
-        <div>
-          <label for="password">Password:</label>
-          <input type="password" id="password" v-model="password" />
-        </div>
-        <button type="submit" @click.prevent="signIn">Sign In</button>
-      </form>
-    </div>
-  </div>
-</template>
-
 <script>
+import utils from '@/utils';
+import {Form, Field, ErrorMessage} from 'vee-validate';
+import * as yup from 'yup';
+
 export default {
   data() {
     return {
-      username: "",
-      password: "",
+      validationSchema: yup.object({
+        account: yup.string().required().label('Account name'),
+        password: yup.string().required().min(3).label('Password'),
+      }),
     };
   },
+  components: {
+    Form,
+    Field,
+    ErrorMessage,
+  },
   methods: {
-    signIn() {
-
-       /* 
-      // Replace this with your sign in logic, e.g. send API request to verify credentials
-      if (this.username === "user" && this.password === "password") {
-        // If credentials are valid, navigate to /search-student
-        this.$router.push("/search-student");
-      } else {
-        // If credentials are invalid, show an error message
-        alert("Invalid username or password");
-      }
-
-      */
-      this.$router.push("/search-student");
-
+    login(values) {
+      console.log(values);
+      utils.userLoginUtils.login(values);
     },
   },
 };
 </script>
 
-<style>
-#wrapper {
-  background-color: #4d1979;
+<template>
+  <Form @submit="login" :validation-schema="validationSchema">
+    <div class="login-wrapper">
+      <div>
+        <div>
+          <h2 mt-3>Sign In</h2>
+          <div>
+            <Field
+                name="account"
+                as="input"
+                type="text"
+                class="input-account"
+                label="Account name"
+                placeholder="Input your account email"
+            />
+            <ErrorMessage
+                name="account"
+                as="div"
+            />
+            <br/>
+            <Field
+                name="password"
+                as="input"
+                type="password"
+                class="input-password"
+                label="Password"
+                placeholder="Input your password"
+            />
+            <ErrorMessage
+                name="password"
+                as="div"
+            />
+          </div>
+          <button>Login</button>
+          <div>
+            <i></i>
+            <i></i>
+          </div>
+        </div>
+        <div>
+          <!-- <BingLink>Home</BingLink>
+          <BingLink>Registration</BingLink>
+          <BingLink>Forget password</BingLink>
+          <BingLink>Service</BingLink> -->
+        </div>
+      </div>
+    </div>
+  </form>
+</template>
+
+<style scoped lang="scss">
+// form {
+//   @apply bg-slate-300 h-screen flex justify-center items-start md:items-center p-5 md:p-0;
+// }
+
+.login-wrapper {
+  background-color: #4D1979;
   color: white;
-}
-#header {
+  height: 100vh;
+  margin: auto;
   display: flex;
-  text-align: center;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-h1 {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 50px;
-  width: 100%;
-}
-h3 {
-  font-size: 25px;
-  line-height: 30px;
-}
-#button-row {
-  display: flex;
-}
-#button-row > div {
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: block flex;
-  background-color: white;
-  color: black;
-  width: 200px;
-  height: 100px;
-  border-radius: 25px;
-  padding: 10px;
-  margin: 10px;
-  font-size: 20px;
 }
 
-.icon {
+
+h2 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 40px;
 }
+button {
+  background-color: rgb(179, 179, 179);
+}
+.input-account {
+  width: 200px;
+}
 
-img {
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
+.input-password {
+  width: 200px;
 }
 </style>

@@ -92,7 +92,7 @@
 <script>
 import AdminHeader from "../components/AdminHeader.vue";
 import AdminSideBar from "../components/AdminSideBar.vue";
-import axios from "axios";
+import api from "@/apis/config.js";
 
 export default {
   data() {
@@ -123,15 +123,21 @@ export default {
       if (Object.keys(data).length === 0) {
         alert("At least 1 field is required");
       } else {
-        axios
+
+        console.log(data);
+
+        api
           .post("http://localhost:8080/api/v1/students/search_students", data)
           .then((response) => {
             this.apiResponse = response;
-            this.dataList = this.apiResponse.data.data;
+            this.dataList = this.apiResponse.data;
           })
           .catch((error) => {
             console.log(error);
           });
+
+
+
       }
     },
 

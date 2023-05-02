@@ -204,7 +204,7 @@
 <script>
 import AdminHeader from "../components/AdminHeader.vue";
 import AdminSideBar from "../components/AdminSideBar.vue";
-import axios from "axios";
+import api from "@/apis/config.js";
 
 export default {
   data() {
@@ -239,10 +239,10 @@ export default {
   },
   methods: {
     searchStudents() {
-      axios
+      api
         .get(`http://localhost:8080/api/v1/students/find_all`)
         .then((response) => {
-          this.dataList = response.data.data;
+          this.dataList = response.data;
           console.log(this.dataList);
         })
         .catch((error) => {
@@ -261,13 +261,12 @@ export default {
       let student_id = this.selectedData["id"];
       console.log(student_id);
       //fetch the account data
-      axios
+      api
         .get(`http://localhost:8080/api/v1/students/${student_id}`)
         .then((response) => {
-          this.completedAppearances = response.data.data["completed_appearances"];
-          this.assignedAppearances = response.data.data["assigned_appearances"];
-          console.log(this.completedAppearances);
-          console.log(this.assignedAppearances);
+          console.log(response)
+          this.completedAppearances = response.data["completed_appearances"];
+          this.assignedAppearances = response.data["assigned_appearances"];
 
         })
         .catch((error) => {
