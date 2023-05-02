@@ -1,6 +1,7 @@
 <script setup>
     import AdminSideBar from '../components/AdminSideBar.vue';
     import AdminHeader from '../components/AdminHeader.vue';
+import axios from 'axios';
 
 </script>
 <template>
@@ -10,53 +11,71 @@
             <AdminHeader />
             <div id="table-wrapper">
                 <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Customer Name</th>
-                        <th>Event Date</th>
-                        <th>Event Title</th>
-                        <th>Request Status</th>
-                        <th>Assigned SuperFrog</th>
-                        <th>Approve/Cancel</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Lisa James</td>
-                        <td>Aug 31, 2022</td>
-                        <td>Wedding</td>
-                        <td>Pending</td>
-                        <td>
-                            <font-awesome-icon class="table-icon" icon="xmark" />
-                            None
-                        </td>
-                        <td>
-                            <font-awesome-icon class="table-icon" icon="check" />
-                            <font-awesome-icon class="table-icon" icon="xmark" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jim McMaster</td>
-                        <td>Sep 10, 2022</td>
-                        <td>Wedding</td>
-                        <td>Approved</td>
-                        <td>
-                            <font-awesome-icon class="table-icon" icon="xmark" />
-                            Jim Doe
-                        </td>
-                        <td>
-                            <font-awesome-icon class="table-icon" icon="check" />
-                            <font-awesome-icon class="table-icon" icon="xmark" />
-                        </td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer Name</th>
+                            <th>Event Date</th>
+                            <th>Event Title</th>
+                            <th>Request Status</th>
+                            <th>Assigned SuperFrog</th>
+                            <th>Approve/Cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody v-if="displayData">
+                        <tr
+                            v-for="(item, index) in displayData"
+                            :key="index"
+                            @click="showPopup(item)"
+                        >
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.date }}</td>
+                            <td>{{item.eventType}}</td>
+                            <td>{{item.status}}</td>
+                            <td>
+                                <font-awesome-icon class="table-icon" icon="xmark" />
+                                {{item.studentWorker}}
+                            </td>
+                            <td>
+                                <font-awesome-icon class="table-icon" icon="check" />
+                                <font-awesome-icon class="table-icon" icon="xmark" />
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
-            </div>
-            
+            </div>  
         </div>
-        
     </div>
-    
 </template>
+
+<script>
+export default (await import('vue')).defineComponent({
+    data() {
+        return {
+            dataList:[],
+        }
+    },
+    computed: {
+        displayData(){
+            return this.dataList;
+        }
+    },
+    methods: {
+        searchAppearances() {
+            axios
+            .get(`http://localhost:8080/api/v1/requests/find_all`)
+            .then((response) => {
+                this.dataList = response.data.data;
+                console.log(this.dataList);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        },
+    }
+})
+</script>
 
 <style>
 #table-wrapper {
