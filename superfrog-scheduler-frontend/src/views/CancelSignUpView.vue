@@ -1,6 +1,7 @@
 <script setup>
     import AdminSideBar from '../components/AdminSideBar.vue';
     import AdminHeader from '../components/AdminHeader.vue';
+    import api from "@/apis/config.js";
 </script>
 <template>
     <AdminSideBar />
@@ -10,11 +11,11 @@
             <h1>Cancel Student Sign-Up of an Appearance Request</h1>
             <form>
             <div class="form-group">
-                <label for="first-name">Enter the ID of the appearance request you want to cancel the sing-up for:</label>
-                <input type="text" id="first-name" v-model="firstName">
+                <label for="first-name">Enter the ID of the student you want to cancel the student sign-up requests for:</label>
+                <input type="text" id="first-name" v-model="studentId">
             </div>
     
-            <button type="submit" class="btn">Cancel Sign-Up</button>
+            <button type="button" @click="cancelSignup">Cancel Sign-Up</button>
             
             </form>
             
@@ -36,7 +37,25 @@
           isInternational: false,
           paymentPreference: 'Mail Check'
         }
-      }
+      },
+
+      methods: {
+        cancelSignup() {
+          console.log(this.eventId);
+          const body = {
+            "appearances": null
+          }
+          console.log(body)
+          api
+          .put(`http://localhost:8080/api/v1/students/admin/cancel/${this.studentId}`, body)
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+        }
+      }  
     }
     </script>
     
