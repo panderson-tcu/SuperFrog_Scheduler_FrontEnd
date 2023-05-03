@@ -1,6 +1,7 @@
 <script setup>
     import AdminSideBar from '../components/AdminSideBar.vue';
     import AdminHeader from '../components/AdminHeader.vue';
+    import api from "@/apis/config.js";
 </script>
 <template>
     <AdminSideBar />
@@ -11,12 +12,11 @@
             <form>
             <div class="form-group">
                 <label for="first-name">Student ID:</label>
-                <input type="text" id="first-name" v-model="firstName">
+                <input type="text" id="first-name" v-model="studentId">
             </div>
-    
-            <RouterLink to="/deactivate"> <!-- Should maybe be clickabke to a view profile page -->
-                <button type="submit" class="btn">Deactivate Student</button>
-            </RouterLink>
+  
+                <button type="button" @click="deactivateStudent">Deactivate Student</button>
+            
             </form>
       </div>
 
@@ -35,6 +35,20 @@
           address: '',
           isInternational: false,
           paymentPreference: 'Mail Check'
+        }
+      },
+
+      methods: {
+        deactivateStudent() {
+          console.log(this.studentId)
+          api
+          .delete(`http://localhost:8080/api/v1/students/${this.studentId}`)
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
         }
       }
     }
