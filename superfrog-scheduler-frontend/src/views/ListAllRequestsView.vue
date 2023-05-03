@@ -1,6 +1,8 @@
 <script setup>
     import AdminSideBar from '../components/AdminSideBar.vue';
     import AdminHeader from '../components/AdminHeader.vue';
+    import axios from 'axios';
+    import api from "@/apis/config.js";
 
 </script>
 <template>
@@ -8,62 +10,118 @@
         <AdminSideBar />
         <div class="right-col">
             <AdminHeader />
+            <h1>View a Super Frog Appearance Request!</h1>
+            <form
+                @submit.prevent="searchAppearances"
+                style="display: flex; margin-bottom: 20px"
+            >
+            <button type="submit">Load all requests first!</button>
+        </form>
+
+        <select id="select-by" v-model="selectedOption">
+            <option value="c-name">Customer Name</option>
+            <option value="eventTitle">Event Title</option>
+            <option value="status">Event Status</option>
+        </select>
+        <form>
+            <div class="form-group">
+                <label for="search-value">Enter the value you want to search by:</label>
+                <input type="text" id="" v-model="searchVal">
+            </div>
+            <button type="button" @click="searchByVal">Search</button>
+
+        </form>
+
             <div id="table-wrapper">
                 <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Customer Name</th>
-                        <th>Event Date</th>
-                        <th>Event Title</th>
-                        <th>Request Status</th>
-                        <th>Assigned SuperFrog</th>
-                        <th>Approve/Cancel</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Lisa James</td>
-                        <td>Aug 31, 2022</td>
-                        <td>Wedding</td>
-                        <td>Pending</td>
-                        <td>
-                            <font-awesome-icon class="table-icon" icon="xmark" />
-                            None
-                        </td>
-                        <td>
-                            <font-awesome-icon class="table-icon" icon="check" />
-                            <font-awesome-icon class="table-icon" icon="xmark" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jim McMaster</td>
-                        <td>Sep 10, 2022</td>
-                        <td>Wedding</td>
-                        <td>Approved</td>
-                        <td>
-                            <font-awesome-icon class="table-icon" icon="xmark" />
-                            Jim Doe
-                        </td>
-                        <td>
-                            <font-awesome-icon class="table-icon" icon="check" />
-                            <font-awesome-icon class="table-icon" icon="xmark" />
-                        </td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer Name</th>
+                            <!-- <th>Event Date</th> -->
+                            <th>Event Title</th>
+                            <th>Request Status</th>
+                            <th>Assigned SuperFrog</th>
+                        </tr>
+                    </thead>
+                    <tbody v-if="displayData">
+                        <tr
+                            v-for="(item, index) in displayData"
+                            :key="index"
+                            @click="showPopup(item)"
+                        >
+                            <td>{{ item.E_id }}</td>
+                            <td>{{ item.C_firstName + " " + item.C_lastName }}</td>
+                            <!-- <td>{{ item.date }}</td> -->
+                            <td>{{item.eventTitle}}</td>
+                            <td>{{item.status}}</td>
+                            <td>
+                                {{item.studentWorker}}
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
-            </div>
-            
+            </div>  
         </div>
-        
     </div>
-    
 </template>
+
+<script>
+export default (await import('vue')).defineComponent({
+    data() {
+        return {
+            dataList:[],
+            selectedOption: "",
+            searchVal: "",
+        }
+    },
+    computed: {
+        displayData(){
+            return this.dataList;
+        }
+    },
+    methods: {
+        searchAppearances() {
+            axios
+            .get(`http://localhost:8080/api/v1/appearances/get_all`)
+            .then((response) => {
+                this.dataList = response.data.data;
+                console.log(this.dataList);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        },
+        searchByVal() {
+            // const body = {
+            //     temp: this.searchVal
+            // }
+            console.log(this.selectedOption);
+            console.log(this.searchVal);
+
+            const temp = this.dataList.filter(item => item.status == this.searchVal);
+            this.dataList = temp;
+            // api
+            // .post(`http://localhost:8080/api/v1/appearances/admin/search_requests`, body)
+            // .then((response) => {
+            //     this.dataList = response.data.data;
+            //     console.log(response.data.data);
+            // })
+            // .catch((error) => {
+            //     console.log(error);
+            // })
+            
+        }
+    }
+})
+</script>
 
 <style>
 #table-wrapper {
     background-color: #4D1979;
     margin: 5px;
-    padding-top: 341px;
-    padding-bottom: 341px;
+    padding-top: 200px;
+    padding-bottom: 200px;
 
 }
 
@@ -106,5 +164,9 @@ td {
     top: 0;
     right: 0;
     width: 66vw;
+    min-height: 100%;
+    max-height: fit-content;
+    background-color: #4D1979;
+    color: white;
 }
 </style>
