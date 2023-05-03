@@ -48,6 +48,7 @@
       padding: 20px;
       background-color: #4D1979;
       color: #444;
+      height: 100vh;
     }
     
     h1 {
@@ -117,6 +118,7 @@
         top: 0;
         right: 0;
         width: 66vw;
+        height: 100vh;
     }
   
   </style>
