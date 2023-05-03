@@ -3,9 +3,8 @@
       style="
         height: 100%;
         width: 23%;
-        background-color: white;
         color: white;
-        background-color: #4D1979;
+        background-color: #4D1985;
       "
     >
       <div id="sidebar-main">
@@ -20,9 +19,7 @@
 
         <div id="sidebar-nav-button">
           <div id="sf-student-menu">
-            <font-awesome-icon class="sidebar-icon" icon ="address-book"/>
-            <span class="menu-label">SuperFrog Students</span>
-            <font-awesome-icon class="sidebar-icon" icon ="circle-chevron-up"/>
+
             <div class="dropdown" id="sf-menu-dropdown">
               <RouterLink to="/add-student" class="menu-label"
                 >Add a New Student</RouterLink
@@ -36,9 +33,6 @@
             </div>
           </div>
           <div id="requests-menu">
-            <font-awesome-icon class="sidebar-icon" icon ="bars-progress"/>
-            <span class="menu-label">Requests</span>
-            <font-awesome-icon class="sidebar-icon" icon ="circle-chevron-up"/>
             <div class="dropdown" id="requests-menu-dropdown">
               <RouterLink to="/select-date-time" class="menu-label"
                 >Add a New Request</RouterLink
@@ -46,22 +40,26 @@
               <RouterLink to="/list-requests" class="menu-label"
                 >View All Requests</RouterLink
               >
+              <RouterLink to="/view-superfrog-student-account" class="menu-label"
+                >View Student Account</RouterLink
+              >
               <RouterLink to="/cancel-signup" class="menu-label"
                 >Cancel Sign-Up</RouterLink
               >
               <RouterLink to="/edit-request" class="menu-label"
                 >Edit Request Status</RouterLink
               >
+              <RouterLink to="/payment-form" class="menu-label"
+                >Honorarium</RouterLink
+              >
+              <RouterLink to="/performance-reports" class="menu-label"
+                >Performance Reports</RouterLink
+              >
+
             </div>
           </div>
-          <div id="calendar">
-            <font-awesome-icon class="sidebar-icon" icon ="calendar-days"/>
-            <span class="menu-label">Calendar</span>
-          </div>
-          <div id="reports">
-            <font-awesome-icon class="sidebar-icon" icon ="book"/>
-            <span class="menu-label">Reports</span>
-          </div>
+
+
         </div>
       </div>
     </div>
@@ -84,6 +82,7 @@
 
 #sidebar-main {
   text-align: center;
+  margin-right:20px;
 }
 
 #sidebar-nav-button {
@@ -103,7 +102,8 @@
 }
 
 .menu-label {
-  font-size: 20px;
+  font-size: 15px;
+  margin-bottom: 5px;
   /* font-weight: bold; */
   color: white;
 }

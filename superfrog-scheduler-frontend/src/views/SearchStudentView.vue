@@ -3,7 +3,7 @@
     <!--Admin side bar-->
     <AdminSideBar />
     <div id="main-col">
-      <AdminHeader/>
+      <AdminHeader />
       <!--body-->
       <div
         style="
@@ -59,6 +59,8 @@
           <table>
             <thead>
               <tr>
+                <th>ID</th>
+
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
@@ -68,6 +70,7 @@
             </thead>
             <tbody v-if="dataList">
               <tr v-for="(item, index) in dataList" :key="index">
+                <td>{{ item.id }}</td>
                 <td>{{ item.firstName }}</td>
                 <td>{{ item.lastName }}</td>
                 <td>{{ item.email }}</td>
@@ -78,7 +81,6 @@
           </table>
         </div>
       </div>
-      
     </div>
     <!--footer-->
 
@@ -86,7 +88,6 @@
       <p>{{ university }} &copy; {{ year }} {{ title }}</p>
     </div>
   </div>
-  
 </template>
 
 <script>
@@ -123,7 +124,6 @@ export default {
       if (Object.keys(data).length === 0) {
         alert("At least 1 field is required");
       } else {
-
         console.log(data);
 
         api
@@ -135,9 +135,6 @@ export default {
           .catch((error) => {
             console.log(error);
           });
-
-
-
       }
     },
 
