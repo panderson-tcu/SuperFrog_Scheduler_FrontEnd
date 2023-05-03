@@ -2,7 +2,6 @@
     import AdminSideBar from '../components/AdminSideBar.vue';
     import AdminHeader from '../components/AdminHeader.vue';
     import api from "@/apis/config.js";
-import axios from 'axios';
 </script>
 <template>
     <AdminSideBar />
