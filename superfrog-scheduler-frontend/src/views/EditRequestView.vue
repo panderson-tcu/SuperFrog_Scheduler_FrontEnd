@@ -1,6 +1,8 @@
 <script setup>
     import AdminSideBar from '../components/AdminSideBar.vue';
     import AdminHeader from '../components/AdminHeader.vue';
+    import api from "@/apis/config.js";
+import axios from 'axios';
 </script>
 <template>
     <AdminSideBar />
@@ -11,12 +13,13 @@
             <form>
             <div class="form-group">
                 <label for="first-name">Enter the ID of the appearance request you want to edit:</label>
-                <input type="text" id="first-name" v-model="firstName">
+                <input type="text" id="first-name" v-model="eventId">
             </div>
-    
             
-            <button type="submit" class="btn">Approve Request</button>
-            
+            <button type="button" @click="statusApprove">Approve Request</button>
+
+            <!-- <button class="btn" @click="statusApprove()">Approve Request</button> -->
+
             <button type="submit" class="btn">Deny Request</button>
             
             <button type="submit" class="btn">Cancel Request</button>
@@ -33,6 +36,7 @@
     export default {
       data() {
         return {
+          eventId: '',
           firstName: '',
           lastName: '',
           phone: '',
@@ -40,6 +44,24 @@
           address: '',
           isInternational: false,
           paymentPreference: 'Mail Check'
+        }
+      },
+
+      methods: {
+        statusApprove() {
+          console.log(this.eventId);
+
+          api
+          // .put(`http://localhost:8080/api/v1/appearances/admin/cancel/${this.eventId}`, {
+            .put("http://localhost:8080/api/v1/appearances/admin/cancel/2", {
+            "status": "CANCELLED_BY_SD"
+          })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
         }
       }
     }
