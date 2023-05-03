@@ -18,11 +18,9 @@ import axios from 'axios';
             
             <button type="button" @click="statusApprove">Approve Request</button>
 
-            <!-- <button class="btn" @click="statusApprove()">Approve Request</button> -->
-
-            <button type="submit" class="btn">Deny Request</button>
+            <button type="button" @click="statusDeny">Deny Request</button>
             
-            <button type="submit" class="btn">Cancel Request</button>
+            <button type="button" @click="statusCancel">Cancel Request</button>
 
             </form>
 
@@ -50,12 +48,42 @@ import axios from 'axios';
       methods: {
         statusApprove() {
           console.log(this.eventId);
-
+          const body = {
+            "status": "APPROVED"
+          }
+          console.log(body)
           api
-          // .put(`http://localhost:8080/api/v1/appearances/admin/cancel/${this.eventId}`, {
-            .put("http://localhost:8080/api/v1/appearances/admin/cancel/2", {
-            "status": "CANCELLED_BY_SD"
+          .put(`http://localhost:8080/api/v1/appearances/admin/cancel/${this.eventId}`, body)
+          .then((response) => {
+            console.log(response.data);
           })
+          .catch((error) => {
+            console.log(error);
+          })
+        },
+        statusDeny() {
+          console.log(this.eventId);
+          const body = {
+            "status": "REJECTED"
+          }
+          console.log(body)
+          api
+          .put(`http://localhost:8080/api/v1/appearances/admin/cancel/${this.eventId}`, body)
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+        },
+        statusCancel() {
+          console.log(this.eventId);
+          const body = {
+            "status": "CANCELLED_BY_SD"
+          }
+          console.log(body)
+          api
+          .put(`http://localhost:8080/api/v1/appearances/admin/cancel/${this.eventId}`, body)
           .then((response) => {
             console.log(response.data);
           })
