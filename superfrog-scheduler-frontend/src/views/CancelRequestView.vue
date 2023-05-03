@@ -7,15 +7,15 @@
     <div class="right-col">
         <AdminHeader />
         <div class="container">
-            <h1>Deactivate Superfrog Student Account</h1>
+            <h1>Cancel an Appearance Request</h1>
             <form>
             <div class="form-group">
-                <label for="first-name">Student ID:</label>
+                <label for="first-name">Enter the ID of the appearance request you want to cancel:</label>
                 <input type="text" id="first-name" v-model="firstName">
             </div>
     
-            <RouterLink to="/view-profile"> <!-- Should maybe be clickabke to a view profile page -->
-                <button type="submit" class="btn">Deactivate Student</button>
+            <RouterLink to="/cancel-request">
+                <button type="submit" class="btn">Cancel Request</button>
             </RouterLink>
             </form>
       </div>
@@ -48,7 +48,6 @@
       padding: 20px;
       background-color: #4D1979;
       color: #444;
-      height: 100vh;
     }
     
     h1 {
@@ -118,7 +117,45 @@
         top: 0;
         right: 0;
         width: 66vw;
-        height: 100vh;
     }
   
   </style>
+  
+
+
+<!-- <script setup>
+    import AdminSideBar from '../components/AdminSideBar.vue';
+    import AdminHeader from '../components/AdminHeader.vue';
+</script>
+<template>
+    <div id="outer-wrapper">
+        <AdminSideBar id="sidebar-wrapper"/>
+        <AdminHeader id="header-wrapper"/>
+        <h1>Add Student View</h1>
+        <h2>This is an admin page</h2>
+    </div>
+    
+</template>
+
+<style>
+#sidebar-wrapper {
+    max-width: 30vw;
+    height: 100vh;
+    /* background-color: #4D1979;*/
+}
+#outer-wrapper {
+    background-color: lightgrey;
+}
+.icon {
+    color: white;
+}
+
+#header-wrapper {
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 66vw;
+}
+
+</style> -->
