@@ -14,9 +14,8 @@
                 <input type="text" id="first-name" v-model="firstName">
             </div>
     
-            <RouterLink to="/cancel-request">
-                <button type="submit" class="btn">Cancel Sign-Up</button>
-            </RouterLink>
+            <button type="submit" class="btn">Cancel Sign-Up</button>
+            
             </form>
             
       </div>
