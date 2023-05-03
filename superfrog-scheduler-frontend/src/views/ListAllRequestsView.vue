@@ -1,7 +1,8 @@
 <script setup>
     import AdminSideBar from '../components/AdminSideBar.vue';
     import AdminHeader from '../components/AdminHeader.vue';
-import axios from 'axios';
+    import axios from 'axios';
+    import api from "@/apis/config.js";
 
 </script>
 <template>
@@ -16,6 +17,21 @@ import axios from 'axios';
             >
             <button type="submit">Load all requests first!</button>
         </form>
+
+        <select id="select-by" v-model="selectedOption">
+            <option value="c-name">Customer Name</option>
+            <option value="eventTitle">Event Title</option>
+            <option value="status">Event Status</option>
+        </select>
+        <form>
+            <div class="form-group">
+                <label for="search-value">Enter the value you want to search by:</label>
+                <input type="text" id="" v-model="searchVal">
+            </div>
+            <button type="button" @click="searchByVal">Search</button>
+
+        </form>
+
             <div id="table-wrapper">
                 <table>
                     <thead>
@@ -55,6 +71,8 @@ export default (await import('vue')).defineComponent({
     data() {
         return {
             dataList:[],
+            selectedOption: "",
+            searchVal: "",
         }
     },
     computed: {
@@ -74,6 +92,26 @@ export default (await import('vue')).defineComponent({
                 console.log(error);
             });
         },
+        searchByVal() {
+            // const body = {
+            //     temp: this.searchVal
+            // }
+            console.log(this.selectedOption);
+            console.log(this.searchVal);
+
+            const temp = this.dataList.filter(item => item.status == this.searchVal);
+            this.dataList = temp;
+            // api
+            // .post(`http://localhost:8080/api/v1/appearances/admin/search_requests`, body)
+            // .then((response) => {
+            //     this.dataList = response.data.data;
+            //     console.log(response.data.data);
+            // })
+            // .catch((error) => {
+            //     console.log(error);
+            // })
+            
+        }
     }
 })
 </script>
