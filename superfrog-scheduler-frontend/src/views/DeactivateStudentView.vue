@@ -4,10 +4,11 @@
     import api from "@/apis/config.js";
 </script>
 <template>
+      <div id="wrapper">
     <AdminSideBar />
-    <div class="right-col">
-        <AdminHeader />
-        <div class="container">
+    <div id="main-col">
+      <AdminHeader />
+      <div class="container">
             <h1>Deactivate Superfrog Student Account</h1>
             <form>
             <div class="form-group">
@@ -19,8 +20,11 @@
             
             </form>
       </div>
-
     </div>
+    <div id="footer">
+      <p>{{ university }} &copy; {{ year }} {{ title }}</p>
+    </div>
+  </div>
     </template>
     
     <script>
@@ -34,7 +38,10 @@
           email: '',
           address: '',
           isInternational: false,
-          paymentPreference: 'Mail Check'
+          paymentPreference: 'Mail Check',
+          university: "Texas Christian University",
+      year: 2023,
+      title: "SuperFrog Scheduler GOAT",
         }
       },
 

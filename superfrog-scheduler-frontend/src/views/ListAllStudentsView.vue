@@ -13,7 +13,7 @@
           margin-left: 30px;
         "
       >
-        <h1>View a Super Frog Student Account!</h1>
+        <h1>View All Super Frog Students!</h1>
 
         <form
           @submit.prevent="searchStudents"
@@ -34,7 +34,6 @@
         </div>
 
         <div>
-          <h2>Click on each row to view individual students</h2>
           <table>
             <!--table head-->
             <thead>
@@ -74,122 +73,6 @@
           </div>
 
           <div style="height: 100px"></div>
-
-
-          <div class="popup" v-if="popup" style="">
-            <!--Student Account information-->
-            <h2 style="font-weight: bold; margin-left: 30px; margin-top: 30px;">I. Student Account Information</h2>
-            <table style="width: 80%; margin-left: 30px; margin-bottom: 30px; margin: 0 auto;">
-                <!--table head-->
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Address</th>
-                  </tr>
-                </thead>
-                <!--table body-->
-                <tbody>
-                  <tr>
-                    <td>{{ selectedData.id }}</td>
-                    <td>{{ selectedData.firstName }}</td>
-                    <td>{{ selectedData.lastName }}</td>
-                    <td>{{ selectedData.email }}</td>
-                    <td>{{ selectedData.phoneNumber }}</td>
-                    <td>{{ selectedData.address }}</td>
-                  </tr>
-                </tbody>
-              </table>
-
-
-             <!--Signed Up Appearances information-->
-            <h2 style="font-weight: bold; margin-left: 30px; margin-top: 30px;">II. Signed Up Appearances</h2>
-            <table style="width: 90%; margin-left: 30px; margin-bottom: 300px; margin: 0 auto;">
-                <!--table head-->
-                <thead>
-                  <tr>
-                    <th>Event ID</th>
-                    <th>Customer First Name</th>
-                    <th>Customer Last Name</th>
-                    <th>Phone</th>
-                    <th>Begin At</th>
-                    <th>End At</th>
-                    <th>Event Title</th>
-                    <th>Event Address</th>
-                    <th>Event Type</th>
-                    <th>Organizer</th>
-                    <th>STATUS</th>
-
-                  </tr>
-                </thead>
-                <!--table body-->
-                <tbody v-if="assignedAppearances">
-                  <tr v-for="(item, index) in assignedAppearances" :key="index">
-                    <td>{{ item.E_id}}</td>
-                    <td>{{ item.C_firstName }}</td>
-                    <td>{{ item.C_lastName }}</td>
-                    <td>{{ item.C_phone }}</td>
-                    <td>{{ item.beginning_time }}</td>
-                    <td>{{ item.ending_time }}</td>
-                    <td>{{ item.eventTitle }}</td>
-                    <td>{{ item.eventAddress }}</td>
-                    <td>{{ item.eventType }}</td>
-                    <td>{{ item.organizationName }}</td>
-                    <td>{{ item.status }}</td>
-                  </tr>
-                </tbody>
-              </table>
-
-
-              <!--Signed Up Appearances information-->
-            <h2 style="font-weight: bold; margin-left: 30px; margin-top: 30px;">III. Completed Appearances</h2>
-            <table style="width: 90%; margin-left: 30px; margin-bottom: 300px; margin: 0 auto;">
-                <!--table head-->
-                <thead>
-                  <tr>
-                    <th>Event ID</th>
-                    <th>Customer First Name</th>
-                    <th>Customer Last Name</th>
-                    <th>Phone</th>
-                    <th>Begin At</th>
-                    <th>End At</th>
-                    <th>Event Title</th>
-                    <th>Event Address</th>
-                    <th>Event Type</th>
-                    <th>Organizer</th>
-                    <th>STATUS</th>
-
-                  </tr>
-                </thead>
-                <!--table body-->
-                <tbody v-if="completedAppearances">
-                  <tr v-for="(item, index) in completedAppearances" :key="index">
-                    <td>{{ item.E_id}}</td>
-                    <td>{{ item.C_firstName }}</td>
-                    <td>{{ item.C_lastName }}</td>
-                    <td>{{ item.C_phone }}</td>
-                    <td>{{ item.beginning_time }}</td>
-                    <td>{{ item.ending_time }}</td>
-                    <td>{{ item.eventTitle }}</td>
-                    <td>{{ item.eventAddress }}</td>
-                    <td>{{ item.eventType }}</td>
-                    <td>{{ item.organizationName }}</td>
-                    <td>{{ item.status }}</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <div style="height: 80px"></div>
-
-
-              <div style="position:fixed; top:0; right: 0; margin-right: 20px; margin-top: 10px;">
-                <button @click="hidePopup">X</button>
-              </div>
-            
-          </div>
         </div>
       </div>
     </div>
@@ -255,28 +138,7 @@ export default {
         return a[this.selectedOption].localeCompare(b[this.selectedOption]);
       });
     },
-    showPopup(data) {
-      this.popup = true;
-      this.selectedData = data;
-      let student_id = this.selectedData["id"];
-      console.log(student_id);
-      //fetch the account data
-      api
-        .get(`http://localhost:8080/api/v1/students/${student_id}`)
-        .then((response) => {
-          console.log(response)
-          this.completedAppearances = response.data["completed_appearances"];
-          this.assignedAppearances = response.data["assigned_appearances"];
 
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    hidePopup() {
-      console.log("hide pop-up clicked");
-      this.popup = false;
-    },
     prevPage() {
       this.currentPage--;
     },
