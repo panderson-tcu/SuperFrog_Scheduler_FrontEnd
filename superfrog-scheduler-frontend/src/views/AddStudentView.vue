@@ -1,6 +1,7 @@
 <script setup>
     import AdminSideBar from '../components/AdminSideBar.vue';
     import AdminHeader from '../components/AdminHeader.vue';
+    import api from "@/apis/config.js";
 </script>
 <template>
     <AdminSideBar />
@@ -9,6 +10,10 @@
         <div class="container">
             <h1>Create Superfrog Student Account</h1>
             <form>
+            <div class="form-group">
+                <label for="id">Student ID:</label>
+                <input type="text" id="id" v-model="studentId">
+            </div>
             <div class="form-group">
                 <label for="first-name">First Name:</label>
                 <input type="text" id="first-name" v-model="firstName">
@@ -29,7 +34,7 @@
                 <label for="address">Address:</label>
                 <textarea id="address" v-model="address"></textarea>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="international">International:</label>
                 <select id="international" v-model="isInternational">
                 <option value="false">Not International</option>
@@ -42,11 +47,9 @@
                 <option value="Mail Check">Mail Check</option>
                 <option value="Pick up check">Pick up check</option>
                 </select>
-            </div>
+            </div> -->
     
-            <RouterLink to="/view-profile"> <!-- Should maybe be clickabke to a view profile page -->
-                <button type="submit" class="btn">Save Changes</button>
-            </RouterLink>
+                <button type="button" @click="addStudent">Add Student</button>
             </form>
       </div>
 
@@ -65,6 +68,29 @@
           address: '',
           isInternational: false,
           paymentPreference: 'Mail Check'
+        }
+      },
+
+      methods: {
+        addStudent() {
+          console.log(this.studentId);
+          const body = {
+            "id": this.studentId,
+            "firstName": this.firstName,
+            "lastName": this.lastName,
+            "phoneNumber": this.phone,
+            "email": this.email,
+            "address": this.address
+          }
+          console.log(body)
+          api
+          .post("http://localhost:8080/api/v1/students", body)
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
         }
       }
     }
