@@ -197,7 +197,7 @@ let routes = [
         meta: {
           requiresAuth: false,
         },
-        component: () => import("../views/ListAllStudentsView.vue"),
+        component: () => import("../views/ViewAnAccount.vue"),
       },
 
       //UC 18: Spirit Director generates TCU Honorarium

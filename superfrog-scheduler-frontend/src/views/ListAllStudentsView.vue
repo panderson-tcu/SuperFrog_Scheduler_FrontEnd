@@ -13,7 +13,7 @@
           margin-left: 30px;
         "
       >
-        <h1>View All Super Frog Students!</h1>
+        <h1>View All SuperFrog Students</h1>
 
         <form
           @submit.prevent="searchStudents"
@@ -252,7 +252,7 @@ tr:hover td {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  height: 500px; 
+  height: 500px;
   overflow: auto;
 }
 .popup-content {
@@ -276,4 +276,3 @@ tr:hover td {
   position: absolute;
 }
 </style>
-

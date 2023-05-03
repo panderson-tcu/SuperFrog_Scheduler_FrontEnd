@@ -27,6 +27,9 @@
               <RouterLink to="/list-students" class="menu-label"
                 >View All Students</RouterLink
               >
+              <RouterLink to="/view-superfrog-student-account" class="menu-label"
+                >View Student Account</RouterLink
+              >
               <RouterLink to="/deactivate" class="menu-label"
                 >Deactivate Student</RouterLink
               >
@@ -40,9 +43,7 @@
               <RouterLink to="/list-requests" class="menu-label"
                 >View All Requests</RouterLink
               >
-              <RouterLink to="/view-superfrog-student-account" class="menu-label"
-                >View Student Account</RouterLink
-              >
+
               <RouterLink to="/cancel-signup" class="menu-label"
                 >Cancel Sign-Up</RouterLink
               >
