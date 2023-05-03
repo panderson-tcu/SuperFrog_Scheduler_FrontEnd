@@ -7,17 +7,22 @@
     <div class="right-col">
         <AdminHeader />
         <div class="container">
-            <h1>Cancel an Appearance Request</h1>
+            <h1>Edit Request Status</h1>
             <form>
             <div class="form-group">
-                <label for="first-name">Enter the ID of the appearance request you want to cancel:</label>
+                <label for="first-name">Enter the ID of the appearance request you want to edit:</label>
                 <input type="text" id="first-name" v-model="firstName">
             </div>
     
-            <RouterLink to="/cancel-request">
-                <button type="submit" class="btn">Cancel Request</button>
-            </RouterLink>
+            
+            <button type="submit" class="btn">Approve Request</button>
+            
+            <button type="submit" class="btn">Deny Request</button>
+            
+            <button type="submit" class="btn">Cancel Request</button>
+
             </form>
+
       </div>
 
     </div>

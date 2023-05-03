@@ -49,8 +49,8 @@
               <RouterLink to="/cancel-signup" class="menu-label"
                 >Cancel Sign-Up</RouterLink
               >
-              <RouterLink to="/cancel-request" class="menu-label"
-                >Cancel Request</RouterLink
+              <RouterLink to="/edit-request" class="menu-label"
+                >Edit Request Status</RouterLink
               >
             </div>
           </div>

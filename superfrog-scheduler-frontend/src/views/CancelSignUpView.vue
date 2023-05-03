@@ -18,6 +18,7 @@
                 <button type="submit" class="btn">Cancel Sign-Up</button>
             </RouterLink>
             </form>
+            
       </div>
 
     </div>

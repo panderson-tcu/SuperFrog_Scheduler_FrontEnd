@@ -162,12 +162,12 @@ let routes = [
 
     //UC 12 : Spirit Director cancels request
     {
-        path: '/cancel-request',
-        name: '/cancel-request',
+        path: '/edit-request',
+        name: '/edit-request',
         meta: {
         requiresAuth: false,
         },
-        component: () => import('../views/CancelRequestView.vue')
+        component: () => import('../views/EditRequestView.vue')
     },
 
     //UC 13 : Spirit Director creates student account
