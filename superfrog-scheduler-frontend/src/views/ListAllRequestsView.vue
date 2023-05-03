@@ -9,17 +9,23 @@ import axios from 'axios';
         <AdminSideBar />
         <div class="right-col">
             <AdminHeader />
+            <h1>View a Super Frog Appearance Request!</h1>
+            <form
+                @submit.prevent="searchAppearances"
+                style="display: flex; margin-bottom: 20px"
+            >
+            <button type="submit">Load all requests first!</button>
+        </form>
             <div id="table-wrapper">
                 <table>
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Customer Name</th>
-                            <th>Event Date</th>
+                            <!-- <th>Event Date</th> -->
                             <th>Event Title</th>
                             <th>Request Status</th>
                             <th>Assigned SuperFrog</th>
-                            <th>Approve/Cancel</th>
                         </tr>
                     </thead>
                     <tbody v-if="displayData">
@@ -28,18 +34,13 @@ import axios from 'axios';
                             :key="index"
                             @click="showPopup(item)"
                         >
-                            <td>{{ item.id }}</td>
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.date }}</td>
-                            <td>{{item.eventType}}</td>
+                            <td>{{ item.E_id }}</td>
+                            <td>{{ item.C_firstName + " " + item.C_lastName }}</td>
+                            <!-- <td>{{ item.date }}</td> -->
+                            <td>{{item.eventTitle}}</td>
                             <td>{{item.status}}</td>
                             <td>
-                                <font-awesome-icon class="table-icon" icon="xmark" />
                                 {{item.studentWorker}}
-                            </td>
-                            <td>
-                                <font-awesome-icon class="table-icon" icon="check" />
-                                <font-awesome-icon class="table-icon" icon="xmark" />
                             </td>
                         </tr>
                     </tbody>
@@ -64,7 +65,7 @@ export default (await import('vue')).defineComponent({
     methods: {
         searchAppearances() {
             axios
-            .get(`http://localhost:8080/api/v1/requests/find_all`)
+            .get(`http://localhost:8080/api/v1/appearances/get_all`)
             .then((response) => {
                 this.dataList = response.data.data;
                 console.log(this.dataList);
@@ -81,8 +82,8 @@ export default (await import('vue')).defineComponent({
 #table-wrapper {
     background-color: #4D1979;
     margin: 5px;
-    padding-top: 341px;
-    padding-bottom: 341px;
+    padding-top: 200px;
+    padding-bottom: 200px;
 
 }
 
@@ -125,5 +126,9 @@ td {
     top: 0;
     right: 0;
     width: 66vw;
+    min-height: 100%;
+    max-height: fit-content;
+    background-color: #4D1979;
+    color: white;
 }
 </style>
